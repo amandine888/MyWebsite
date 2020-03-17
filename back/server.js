@@ -11,11 +11,20 @@ app.use(bodyParser.urlencoded({extended: false}));
 // Connection à la base de données : 
 mongoose.connect('mongodb://localhost/mywebsite', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
-// Récupération des models : 
+// Récupération des controllers : 
+Authcontroller = require ('./controllers/auth'); 
 
-let User = require('./models/user'); 
-let Association = require('./models/asso'); 
-let Event = require('./models/event'); 
-let Favorite = require('./models/favorite'); 
-let Tag = require('./models/tag'); 
-let Media = require('./models/media'); 
+// Route test : 
+app.route('/').get(function(req, res){
+    res.send('hello world !');
+});
+
+// Route register : 
+app.route('/register').post(Authcontroller.register); 
+
+// Route login : 
+app.route('/login').post(Authcontroller.login); 
+
+
+// Mise en écoute de notre application (sur le port 3000)
+app.listen(3000);

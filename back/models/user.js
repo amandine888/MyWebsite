@@ -1,14 +1,6 @@
 const mongoose = require ('mongoose'); 
 
 let userSchema = new mongoose.Schema ({
-    firstname: {
-        type: 'string', 
-    }, 
-
-    lastname: {
-        type: 'string', 
-    },
-
     pseudo: {
         type: 'string', 
         required: 'You have to choose a pseudo', 
@@ -17,7 +9,7 @@ let userSchema = new mongoose.Schema ({
     email: {
         type: 'string', 
         required: 'You have ton enter an email', 
-        unique: 'true', 
+        unique: true
     }, 
 
     password: {
@@ -25,8 +17,9 @@ let userSchema = new mongoose.Schema ({
         required: 'You have to enter a password', 
     },
 
-    role: {
-        admin: 'boolean', 
+    admin: {
+        type: 'boolean', 
+        default: false
     }, 
 
     favId: [{
