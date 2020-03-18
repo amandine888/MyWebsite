@@ -1,4 +1,5 @@
-// Dépendances : 
+// Dépendencies : 
+
 const express = require('express'), 
     bodyParser = require ('body-parser'), 
     mongoose = require ('mongoose'),
@@ -11,6 +12,9 @@ const express = require('express'),
     require('dotenv').config();
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json()); 
+app.use(cors()); 
+app.use(bearerToken()); 
 
 // Connection à la base de données : 
 mongoose.connect('mongodb://localhost/mywebsite', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
@@ -30,5 +34,5 @@ app.route('/register').post(Authcontroller.register);
 app.route('/login').post(Authcontroller.login); 
 
 
-// Mise en écoute de notre application (sur le port 3000)
+// Mise en écoute de notre application (sur le port 3050 déclaré plus haut)
 app.listen(port);

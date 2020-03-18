@@ -17,7 +17,8 @@
     "express": "^4.17.1",
     "express-bearer-token": "^2.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.3",
+    "minimist": "^1.2.5",
+    "mongoose": "^5.9.5",
     "node-pre-gyp": "^0.14.0",
     "nodemon": "^2.0.2"
   }

@@ -18,34 +18,56 @@ exports.register = function(req, res){
             user.save(function(err, data){
                 
                 if (err)
-                res.send(err)
+                res.status(400).json(err)
 
-                if (data)
-                res.send(data)
+                else 
+                res.status(200).json(data)
+                
             })
         }
     };
 
 exports.login = function(req, res){
 
-    User.findOne({email: req.body.email}, (function(err, data){
+    User.findOne({email: req.body.email}, function(err, user){
 
-        if (data){
+        if (err)
+            res.status(400).json({auth: false, message: err}); 
 
-            bcrypt.compare(req.body.password, data.password, function(err, result){
-                
-                if(result){
-                        let token = jwt.sign({id: data.id}, 'secretkey', {expiresIn: '1h'}); 
-                        let response = {user: data, token: token}; 
-                        res.send(response); 
+        else if (!user)
+            res.status(201).json({auth: false, message: 'No user finded'}); 
+
+        else {
+            bcrypt.compare(req.body.password, user.password, function(err, result){
+                if (result) {
+                    var token = jwt.sign({id: user._id, admin: user.admin}, jwt_secret, {expiresIn: '1h'}); 
+                    res.status(200).json({auth: true, token: token}); 
                 }
 
                 else
-                res.send(err); 
-            });
+                    res.status(201).json({auth:false, message: 'Password not matched'}); 
+            })
         }
-
-        else
-        res.send(err); 
-    })); 
+    });
 }
+
+
+        // if (data){
+
+        //     bcrypt.compare(req.body.password, data.password, function(err, result){
+                
+        //         if(result){
+        //                 let token = jwt.sign({id: data.id}, 'secretkey', {expiresIn: '1h'}); 
+        //                 let response = {user: data, token: token}; 
+        //                 res.send(response); 
+        //         }
+
+        //         else
+        //         res.send(err); 
+        //     });
+        // }
+
+        // else
+        // res.send(err); 
+    //})); 
+//}
