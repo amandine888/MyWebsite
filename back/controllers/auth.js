@@ -1,10 +1,12 @@
 const User = require ('../models/user'); 
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
+jwt_secret = process.env.JWT_SECRET_KEY; 
 
 exports.register = function(req, res){
 
-    bcrypt.hash(req.body.password, 10, function (err, hash){
+    let hash = bcrypt.hashSync(req.body.password, 10);
+        req.body.password = hash;
 
         let user = new User ({
             pseudo : req.body.pseudo, 
@@ -22,8 +24,7 @@ exports.register = function(req, res){
                 res.send(data)
             })
         }
-    });
-}
+    };
 
 exports.login = function(req, res){
 

@@ -4,7 +4,11 @@ const express = require('express'),
     mongoose = require ('mongoose'),
     bcrypt = require ('bcrypt'), 
     jwt = require ('jsonwebtoken'), 
+    cors = require('cors'),
+    bearerToken = require('express-bearer-token'),
+    port = 3050; 
     app = express (); 
+    require('dotenv').config();
 
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -27,4 +31,4 @@ app.route('/login').post(Authcontroller.login);
 
 
 // Mise en écoute de notre application (sur le port 3000)
-app.listen(3000);
+app.listen(port);
