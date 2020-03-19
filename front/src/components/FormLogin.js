@@ -1,11 +1,19 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import './../Mystyle.css';
+import Button from '@material-ui/core/Button';
+import { styled } from '@material-ui/core/styles';
+import './../mystyle.css';
+
+const Styles = styled(Button)({
+        color: 'green',
+})
 
 class Login extends React.Component {
     render () {
         return (
             <div>
+                {/* <Button variant="contained" color="primary" >Hello World</Button>
+                <Styles variant="contained">Secondary</Styles> */}
                 <div className='formContainer'>
                     <div className='titleForm'>
                         <h2>Connexion</h2>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import './../Mystyle.css';
+import './../mystyle.css';
 
 class Register extends React.Component {
     render () {
