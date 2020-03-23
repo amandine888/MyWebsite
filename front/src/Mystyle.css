@@ -1,0 +1,61 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+.formContainer{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.titleForm{
+    background-color: rgb(234, 206, 194, 0.5);
+    width: 88%;
+    display:flex; 
+    justify-content: center;
+    font-size: 1.25em;
+    font-family: 'Jaldi', sans-serif;
+    text-transform: uppercase;
+}
+
+.fieldContainer{
+    border: 0.5px solid #000000; 
+    width: 88%;
+    height: 60vh;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.fieldStyle{
+    display: flex;
+    flex-direction: column;
+}
+
+.styleLabel{
+    font-size: 1.125em;
+    margin-top: 5vh;
+}
+
+.styleButton{
+    background-color: #B75D69;
+    font-size: 1.125em;
+    font-weight: 400;
+    width: 50vw;;
+    padding: 1.5vh 0vw;  
+    margin-top: 4vh;
+}
+
+.styleInput {
+    border: 0.5px solid #000000; 
+    width: 70vw;
+    height: 5vh;
+}
+
+.textForm{
+    font-size: 0.875em;
+}
