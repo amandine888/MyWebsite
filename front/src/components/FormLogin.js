@@ -9,11 +9,26 @@ const Styles = styled(Button)({
 })
 
 class Login extends React.Component {
+
+    constructor(props){
+        super(props); 
+
+        this.state = {
+            email: "",
+            password: ""
+        }; 
+
+        //bind : 
+
+    }
+
+    // props : 
+
+
+
     render () {
         return (
             <div>
-                {/* <Button variant="contained" color="primary" >Hello World</Button>
-                <Styles variant="contained">Secondary</Styles> */}
                 <div className='formContainer'>
                     <div className='titleForm'>
                         <h2>Connexion</h2>
@@ -21,11 +36,11 @@ class Login extends React.Component {
                     <form className='fieldContainer'>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Email</label>
-                            <input className='styleInput' type='text'></input>
+                            <input className='styleInput' value = {this.state.email} type='email'></input>
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Password</label>
-                            <input className='styleInput' type='text'></input>
+                            <input className='styleInput' value = {this.state.password} type='password'></input>
                             <p className='textForm'>Mot de passe oublié ? Cliquez sur ce lien</p>
                         </div>
                         <button className='styleButton'>Se connecter</button>
