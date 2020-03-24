@@ -21,20 +21,28 @@ class Register extends React.Component {
         // bind : 
         this.handlechange = this.handlechange.bind(this); 
         this.send = this.send.bind(this); 
+        // this.submit = this.submit.bind(this); 
 
     }
 
     //props : 
 
     handlechange (e) {
-        let ref = e.target.getAttribute('name');
+        let ref = e.target.name; 
+        let value = e.target.value; 
+        
         this.setState({ 
-            [ref]: e.target.value 
+            [ref]: value
         });
     }
 
-    send (e) {
+    // submit (e) {
+    //     e.preventDefault(); 
+    //     console.log(this.state); 
+    // }
 
+    send (e) {
+        console.log(this.state);
         const { pseudo, email, password} = this.state; 
 
         fetch('http://localhost:3050/register',{
@@ -54,16 +62,16 @@ class Register extends React.Component {
         //     .then(console.log);
         // })
 
-        .then((response)=>{
-            if (response.ok) {
-                response.json()
-                .then (console.log);
-            }
-            else {
-                console.error('server response : ' +response.status); 
-            }
-        })
-        .catch(error =>{console.error(error);})
+            .then((response)=>{
+                if (response.ok) {
+                    response.json()
+                    .then (console.log);
+                }
+                else {
+                    console.error('server response : ' +response.status); 
+                }
+            })
+            .catch(error =>{console.error(error);})
         // e.prevent.default(); 
         // console.log("submitted"); 
     }
@@ -76,7 +84,7 @@ class Register extends React.Component {
                     <div className='titleForm'>
                         <h2>Inscription</h2>
                     </div>
-                    <form className='fieldContainer' style={containerStyle}>
+                    <div className='fieldContainer' style={containerStyle}>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Pseudo</label>
                             <input className='styleInput' type='text' name='pseudo' value={this.state.pseudo} onChange={this.handlechange}/>
@@ -91,10 +99,10 @@ class Register extends React.Component {
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Confirm Password</label>
-                            <input className='styleInput' id="confPassword" type='text' name='confPassword' value={this.state.confPassword} onChange={this.handlechange}/>
+                            <input className='styleInput' id="confPassword" type='password' name='confPassword' value={this.state.confPassword} onChange={this.handlechange}/>
                         </div>
                         <button className='styleButton' onClick={this.send}>S'inscrire</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         )
