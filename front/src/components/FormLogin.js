@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/core/styles';
 import './../mystyle.css';
 
-const Styles = styled(Button)({
-        color: 'green',
-})
+// const Styles = styled(Button)({
+//         color: 'green',
+// })
 
 class Login extends React.Component {
 
