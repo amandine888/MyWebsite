@@ -35,17 +35,17 @@ exports.login = function(req, res){
             res.status(400).json({auth: false, message: err}); 
 
         else if (!user)
-            res.status(201).json({auth: false, message: 'No user finded'}); 
+            res.status(201).json({auth: false, message: 'User not found'}); 
 
         else {
             bcrypt.compare(req.body.password, user.password, function(err, result){
                 if (result) {
-                    var token = jwt.sign({id: user._id, admin: user.admin}, jwt_secret, {expiresIn: '1h'}); 
-                    res.status(200).json({auth: true, token: token}); 
+                    let token = jwt.sign({id: user._id, admin: user.admin}, jwt_secret, {expiresIn: '1h'}); 
+                    res.status(200).json({auth: true, user : user, token: token}); 
                 }
 
                 else
-                    res.status(201).json({auth:false, message: 'Password not matched'}); 
+                    res.status(400).json({auth:false, message: 'Your email or password do not exist'}); 
             })
         }
     });

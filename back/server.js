@@ -16,11 +16,12 @@ app.use(bodyParser.json());
 app.use(cors()); 
 app.use(bearerToken()); 
 
-// Connection à la base de données : 
+// Database connexion : 
 mongoose.connect('mongodb://localhost/mywebsite', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
-// Récupération des controllers : 
+// Controller recovery : 
 Authcontroller = require ('./controllers/auth'); 
+Userscontroller = require ('./controllers/users'); 
 
 // Route test : 
 app.route('/').get(function(req, res){
@@ -31,8 +32,11 @@ app.route('/').get(function(req, res){
 app.route('/register').post(Authcontroller.register); 
 
 // Route login : 
-app.route('/login').post(Authcontroller.login); 
+app.route('/login').post(Authcontroller.login);  
 
+// Route to find one user by Id : 
 
-// Mise en écoute de notre application (sur le port 3050 déclaré plus haut)
+app.route('/userid').get(Userscontroller.getUserById); 
+
+// Application listening (on port 3050, declared above)
 app.listen(port);
