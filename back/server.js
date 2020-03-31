@@ -22,6 +22,7 @@ mongoose.connect('mongodb://localhost/mywebsite', {useNewUrlParser: true, useUni
 // Controller recovery : 
 Authcontroller = require ('./controllers/auth'); 
 Userscontroller = require ('./controllers/users'); 
+Assocontroller = require ('./controllers/crudAsso'); 
 
 // Route test : 
 app.route('/').get(function(req, res){
@@ -34,9 +35,20 @@ app.route('/register').post(Authcontroller.register);
 // Route login : 
 app.route('/login').post(Authcontroller.login);  
 
-// Route to find one user by Id : 
-
+// Route to find an user by Id : 
 app.route('/userid').get(Userscontroller.getUserById); 
+
+// Route to create a new association : 
+app.route('/newasso').post(Assocontroller.createAsso); 
+
+// Route to find an association by id : 
+app.route('/assobyid').get(Assocontroller.findAssoById);
+
+// Route to update an association by id : 
+app.route('/changeasso').put(Assocontroller.updateAsso); 
+
+// Route to delete an association by id : 
+app.route('/deleteasso').delete(Assocontroller.deleteAsso); 
 
 // Application listening (on port 3050, declared above)
 app.listen(port);
