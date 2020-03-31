@@ -2,11 +2,14 @@ const User = require ('../models/user');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY; 
+adm_login = process.env.ADMIN_LOGIN; 
+adm_password = process.env.ADMIN_PASSWORD; 
 
 exports.register = function(req, res){
 
     let hash = bcrypt.hashSync(req.body.password, 10);
-        req.body.password = hash;
+    req.body.password = hash;
+    req.body.admin = false; 
 
         let user = new User ({
             pseudo : req.body.pseudo, 
@@ -40,7 +43,7 @@ exports.login = function(req, res){
         else {
             bcrypt.compare(req.body.password, user.password, function(err, result){
                 if (result) {
-                    let token = jwt.sign({id: user._id, admin: user.admin}, jwt_secret, {expiresIn: '1h'}); 
+                    let token = jwt.sign({id: user._id, admin: false}, jwt_secret, {expiresIn: '1h'}); 
                     res.status(200).json({auth: true, user : user, token: token}); 
                 }
 
@@ -49,25 +52,14 @@ exports.login = function(req, res){
             })
         }
     });
+};
+
+exports.logAdmin = function(req, res){
+    
+    if (req.body.name == adm_login && req.body.password == adm_password) {
+        let token = jwt.sign({id: null, admin: true}, jwt_secret); 
+    }
+
+    else
+        res.status (400).json ({auth: false, message: "Wrong name or password"});
 }
-
-
-        // if (data){
-
-        //     bcrypt.compare(req.body.password, data.password, function(err, result){
-                
-        //         if(result){
-        //                 let token = jwt.sign({id: data.id}, 'secretkey', {expiresIn: '1h'}); 
-        //                 let response = {user: data, token: token}; 
-        //                 res.send(response); 
-        //         }
-
-        //         else
-        //         res.send(err); 
-        //     });
-        // }
-
-        // else
-        // res.send(err); 
-    //})); 
-//}

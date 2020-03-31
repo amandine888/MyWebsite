@@ -50,5 +50,9 @@ app.route('/changeasso').put(Assocontroller.updateAsso);
 // Route to delete an association by id : 
 app.route('/deleteasso').delete(Assocontroller.deleteAsso); 
 
+// Route admin login : 
+app.post('/adminlogin', function(req, res){Assocontroller.logAdmin}); 
+// app.route('/adminlogin').post(Assocontroller.logAdmin);
+
 // Application listening (on port 3050, declared above)
 app.listen(port);

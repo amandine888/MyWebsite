@@ -15,7 +15,7 @@ exports.createAsso = function (req, res) {
             return ('Route not allowed')
         }  
         
-        else if(decoded.admin === 'true'){
+        else if(decoded.admin){
             Asso.create(req.body, function(err, newAsso){
                 if (err) 
                     res.status (400).json (err)
@@ -37,7 +37,7 @@ exports.updateAsso = function (req, res) {
             return ('Route not allowed')
         }  
         
-        else if(decoded.admin === 'true'){
+        else if(decoded.admin){
             Asso.updateOne({_id: req.body.id}, {$set: req.body}, function(err, data){
                 if (err) 
                     res.status (400).json (err)
@@ -59,7 +59,7 @@ exports.deleteAsso = function (req, res) {
             return ('Route not allowed')
         }  
         
-        else if(decoded.admin === 'true'){
+        else if(decoded.admin){
             Asso.deleteOne({_id: req.body.id}, function(err, data){
                 if (err) 
                     res.status (400).json (err)
