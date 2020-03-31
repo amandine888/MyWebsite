@@ -17,11 +17,6 @@ let userSchema = new mongoose.Schema ({
         required: 'You have to enter a password', 
     },
 
-    admin: {
-        type: 'boolean', 
-        default: false
-    }, 
-
     favId: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Favorite'
     }], 
