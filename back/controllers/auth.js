@@ -48,7 +48,7 @@ exports.login = function(req, res){
                 }
 
                 else
-                    res.status(400).json({auth:false, message: 'Your email or password do not exist'}); 
+                    res.status(400).json({auth: false, message: 'Your email or password do not exist'}); 
             })
         }
     });
@@ -58,6 +58,7 @@ exports.logAdmin = function(req, res){
     
     if (req.body.name == adm_login && req.body.password == adm_password) {
         let token = jwt.sign({id: null, admin: true}, jwt_secret); 
+        res.status(200).json({auth: true, token: token});
     }
 
     else
