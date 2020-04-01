@@ -12,7 +12,7 @@ exports.getUserById = function (req, res){
                     res.status(401).json('No token provided'); 
                 }
                 else {
-                    User.findOne({user: decoded.id}, function(err, user){
+                    User.findOne({_id: decoded.id}, function(err, user){
                         if (err)
                             res.status(400).json(err);
                         else

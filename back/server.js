@@ -24,6 +24,7 @@ Authcontroller = require ('./controllers/auth');
 Userscontroller = require ('./controllers/users'); 
 Assocontroller = require ('./controllers/crudAsso'); 
 Eventcontroller = require ('./controllers/crudEvent');
+Tagcontroller = require ('./controllers/crudTags'); 
 
 
 // Route test : 
@@ -76,6 +77,19 @@ app.route('/changevent').put(Eventcontroller.updateEvent);
 app.route('/deletevent').delete(Eventcontroller.deleteEvent); 
 
 
+// Tag : 
+
+// Route to create a new tag : 
+app.route('/newtag').post(Tagcontroller.createTag); 
+
+// Route to find a tag by id : 
+app.route('/tagbyid').get(Tagcontroller.findTagById); 
+
+// Route to update a tag : 
+app.route('/changetag').put(Tagcontroller.updateTag);
+
+// Route to delete a tag : 
+app.route('/deletetag').delete(Tagcontroller.deleteTag); 
 
 // Application listening (on port 3050, declared above)
 app.listen(port);
