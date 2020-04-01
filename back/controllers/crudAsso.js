@@ -1,22 +1,25 @@
 const Asso = require ('../models/asso'); 
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
-jwt_secret = process.env.JWT_SECRET_KEY; 
+jwt_secret = process.env.JWT_SECRET_KEY;
 
 
 // Create a new association ( admin ) : 
 
 exports.createAsso = function (req, res) {
 
-    jwt.verify(req.token, jwt_secret, function (err, decoded){
+    jwt.verify(req.headers["x-access-token"] , jwt_secret, function (err, decoded){
+        // console.log ("decoded:".decoded)
+        // console.log("headers", req.headers)
 
         if (err){
-            console.log (err)
-            return ('Route not allowed')
+            // console.log (err)
+            res.status(400).json(err);
         }  
         
         else if(decoded.admin){
             Asso.create(req.body, function(err, newAsso){
+                
                 if (err) 
                     res.status (400).json (err)
                 else
@@ -30,7 +33,7 @@ exports.createAsso = function (req, res) {
 
 exports.updateAsso = function (req, res) {
 
-    jwt.verify(req.token, jwt_secret, function (err, decoded){
+    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -52,7 +55,7 @@ exports.updateAsso = function (req, res) {
 
 exports.deleteAsso = function (req, res) {
 
-    jwt.verify(req.token, jwt_secret, function (err, decoded){
+    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)

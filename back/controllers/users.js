@@ -6,7 +6,7 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.getUserById = function (req, res){
 
-        jwt.verify(req.token, jwt_secret, function(err, decoded){
+        jwt.verify(req.headers["x-access-token"], jwt_secret, function(err, decoded){
             console.log(err); 
             if (err) {
                     res.status(401).json('No token provided'); 

@@ -7,7 +7,7 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.createTag = function (req, res) {
 
-    jwt.verify(req.token, jwt_secret, function (err, decoded){
+    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -35,7 +35,7 @@ exports.createTag = function (req, res) {
 
 exports.updateTag = function (req, res) {
 
-    jwt.verify(req.token, jwt_secret, function (err, decoded){
+    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -57,7 +57,7 @@ exports.updateTag = function (req, res) {
 
 exports.deleteTag = function (req, res) {
 
-    jwt.verify(req.token, jwt_secret, function (err, decoded){
+    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
