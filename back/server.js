@@ -77,16 +77,28 @@ app.route('/deleteasso').delete(Assocontroller.deleteAsso);
 
 // Event : 
 
-// Route to create a new association : 
+// Route to create a new event : 
 app.route('/newevent').post(Eventcontroller.createEvent); 
 
-// Route to find an association by id : 
+// Route to find an event by id : 
 app.route('/eventbyid').get(Eventcontroller.findEventById);
 
-// Route to update an association by id : 
+// Route to find all events : 
+app.route('/eventall').get(Eventcontroller.findAllEvent); 
+
+// Route to find an event by name : 
+app.route('/eventname').get(Eventcontroller.findEventName); 
+
+// Route to find events by tags : 
+app.route('/eventbytag').get(Eventcontroller.findEventTag);
+
+// Route to find events by date : 
+app.route('/eventbydate').get(Eventcontroller.findEventbyDate); 
+
+// Route to update an event by id : 
 app.route('/changevent').put(Eventcontroller.updateEvent); 
 
-// Route to delete an association by id : 
+// Route to delete an event by id : 
 app.route('/deletevent').delete(Eventcontroller.deleteEvent); 
 
 

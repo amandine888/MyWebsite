@@ -5,17 +5,19 @@ let eventSchema = new mongoose.Schema ({
         type: 'string', 
     },
 
-    dateEvent: {
-        type: '',
+    dateEvent: { 
+        type: Date, 
     },
 
     description: {
-        type: '',
+        type: 'string',
     },
 
     location: [
         {street: { type: 'string'}, }, 
-    ]
+    ], 
+
+    tags: [], 
 })
 
 module.exports = mongoose.model ('Event', eventSchema); 
