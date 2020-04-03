@@ -139,7 +139,7 @@ exports.findAssoName = function (req, res) {
 
 exports.findAssoTag = function (req, res) {
 
-    Asso.find({tags:[]}, function(err, asso){
+    Asso.find({tags:[req.body.tags]}, function(err, asso){
 
         if (err)
             res.status(400).json(err)
