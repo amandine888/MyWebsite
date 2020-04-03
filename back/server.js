@@ -55,11 +55,21 @@ app.route('/newasso').post(Assocontroller.createAsso);
 // Route to find an association by id : 
 app.route('/assobyid').get(Assocontroller.findAssoById);
 
+// Route to find all association : 
+app.route('/assoall').get(Assocontroller.findAllAsso); 
+
+// Route to find an association by name : 
+app.route('/assoname').get(Assocontroller.findAssoName); 
+
+// Route to find an association by tag : 
+app.route('/assotag').get(Assocontroller.findAssoTag); 
+
 // Route to update an association by id : 
 app.route('/changeasso').put(Assocontroller.updateAsso); 
 
 // Route to delete an association by id : 
 app.route('/deleteasso').delete(Assocontroller.deleteAsso); 
+
 
 
 // Event : 
