@@ -67,6 +67,9 @@ app.route('/assotag').get(Assocontroller.findAssoTag);
 // Route to update an association by id : 
 app.route('/changeasso').put(Assocontroller.updateAsso); 
 
+// Route to update the name of an association by id : 
+app.route('/changenameasso').put(Assocontroller.updateNameAsso); 
+
 // Route to delete an association by id : 
 app.route('/deleteasso').delete(Assocontroller.deleteAsso); 
 

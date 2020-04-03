@@ -51,6 +51,28 @@ exports.updateAsso = function (req, res) {
         })
     }
 
+// Update an association by name ( admin ) : 
+
+exports.updateNameAsso = function (req, res) {
+
+    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+
+        if (err){
+            console.log (err)
+            return ('Route not allowed')
+        }
+
+        else if (decoded.admin){
+            Asso.updateOne({_id: req.body.id}, {$set:{nameAsso: req.body.nameAsso}}, function(err, asso){
+                if (err) 
+                    res.status (400).json (err)
+                else
+                    res.status(200).json(asso)
+            })
+        }
+    })
+}
+
 // Delete an association ( admin ) : 
 
 exports.deleteAsso = function (req, res) {
