@@ -31,7 +31,7 @@ exports.createTag = function (req, res) {
         })
     }
 
-// Update an tag ( admin ) : 
+// Update a tag ( admin ) : 
 
 exports.updateTag = function (req, res) {
 
@@ -75,7 +75,7 @@ exports.deleteTag = function (req, res) {
         })
     }
 
-// Read a tag (public)
+// Find a tag (public)
 
 exports.findTagById = function (req, res){
 

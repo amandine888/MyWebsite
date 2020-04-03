@@ -6,7 +6,8 @@ let eventSchema = new mongoose.Schema ({
     },
 
     dateEvent: { 
-        type: Date, 
+        type: "date",
+        default: Date.now(), 
     },
 
     description: {

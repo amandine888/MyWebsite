@@ -127,7 +127,7 @@ exports.findEventTag = function (req, res) {
 
 exports.findEventbyDate = function (req, res) {
 
-    Event.find({dateEvent: Date}, function(err, event){
+    Event.find({dateEvent: req.body.dateEvent}, function(err, event){
         if (err)
             res.status(400).json(err)
         else 
