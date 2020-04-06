@@ -44,8 +44,23 @@ app.route('/login').post(Authcontroller.login);
 // Route admin login : 
 app.route('/adminlogin').post(Authcontroller.logAdmin);
 
+
+// User : 
+
 // Route to find an user by Id : 
 app.route('/userid').get(Userscontroller.getUserById); 
+
+// Route to find all users : 
+app.route('/userall').get(Userscontroller.getAllUser); 
+
+// Route to update an user's pseudo : 
+app.route('/updatepseudo').put(Userscontroller.updateUser); 
+
+// Route to delete an user : 
+app.route('/deleteuser').delete(Userscontroller.deleteUser); 
+
+// Route to find user's favorites : 
+app.route('/favuser').get(Userscontroller.getFavUser); 
 
 
 // Association : 
