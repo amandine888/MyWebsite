@@ -24,7 +24,7 @@ Authcontroller = require ('./controllers/auth');
 Userscontroller = require ('./controllers/users'); 
 Assocontroller = require ('./controllers/crudAsso'); 
 Eventcontroller = require ('./controllers/crudEvent');
-Tagcontroller = require ('./controllers/crudTags'); 
+Tagcontroller = require ('./controllers/crudTag'); 
 
 
 // Route test : 
@@ -109,6 +109,15 @@ app.route('/newtag').post(Tagcontroller.createTag);
 
 // Route to find a tag by id : 
 app.route('/tagbyid').get(Tagcontroller.findTagById); 
+
+// Route to find all tags : 
+app.route('/tagall').get(Tagcontroller.findAllTags); 
+
+// route to find a tag by name : 
+app.route('/tagbyname').get(Tagcontroller.findTagByName); 
+
+// route to find a tag by id and get all associations linked : 
+app.route('/tagasso').get(Tagcontroller.findTagAsso); 
 
 // Route to update a tag : 
 app.route('/changetag').put(Tagcontroller.updateTag);

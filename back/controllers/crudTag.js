@@ -43,11 +43,11 @@ exports.updateTag = function (req, res) {
         }  
         
         else if(decoded.admin){
-            Tag.updateOne({_id: req.body.id}, {$set: req.body.libelle}, function(err, data){
+            Tag.updateOne({_id: req.body.id}, {$set: req.body.libelle}, function(err, tag){
                 if (err) 
                     res.status (400).json (err)
                 else
-                    res.status(200).json(data)
+                    res.status(200).json(tag)
                 })
             }
         })
@@ -65,26 +65,64 @@ exports.deleteTag = function (req, res) {
         }  
         
         else if(decoded.admin){
-            Tag.deleteOne({_id: req.body.id}, function(err, data){
+            Tag.deleteOne({_id: req.body.id}, function(err, tag){
                 if (err) 
                     res.status (400).json (err)
                 else
-                    res.status(200).json(data)
+                    res.status(200).json(tag)
                 })
             }
         })
     }
 
-// Find a tag (public)
+// Find a tag by id ( public )
 
 exports.findTagById = function (req, res){
 
-    Tag.findOne({_id: req.body.id}, function (err, data ){
+    Tag.findOne({_id: req.body.id}, function (err, tag){
 
         if (err)
             res.status(400).json(err)
         else 
-            res.status(200).json(data)
+            res.status(200).json(tag)
 
+    })
+}
+
+// Find a tag by name ( public ) : 
+
+exports.findTagByName = function (req, res){
+
+    Tag.findOne({libelle : req.body.libelle}, function (err, tag){
+
+        if (err)
+            res.status(400).json(err)
+        else 
+            res.status(200).json(tag)
+    })
+}
+
+// Find all tags ( public ) : 
+
+exports.findAllTags = function (req, res){
+
+    Tag.find({}, function(err, tag){
+
+        if (err)
+            res.status(400).json(err)
+        else 
+            res.status(200).json(tag)
+    })
+}
+
+// Find all associations into a tag by id : 
+
+exports.findTagAsso = function (req, res){
+
+    Tag.findOne({_id: req.body.id}).populate('assoId[]').exec(function(err, tag){
+        if (err)
+            res.status(400).json(err)
+        else 
+            res.status(200).json(tag)
     })
 }
