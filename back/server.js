@@ -45,6 +45,9 @@ app.route('/login').post(Authcontroller.login);
 // Route admin login : 
 app.route('/adminlogin').post(Authcontroller.logAdmin);
 
+// Route to log out : 
+app.route('/logout').get(Authcontroller.logout); 
+
 
 
 // User : 

@@ -1,4 +1,6 @@
 const User = require ('../models/user'); 
+const Blacklist = require ('../models/blacklist'); 
+Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY; 
@@ -8,7 +10,7 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.getUserById = function (req, res){
 
-        jwt.verify(req.headers["x-access-token"], jwt_secret, function(err, decoded){
+        Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function(err, decoded){
 
             console.log(err); 
 

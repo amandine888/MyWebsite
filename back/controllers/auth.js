@@ -1,9 +1,12 @@
 const User = require ('../models/user'); 
+const Blacklist = require ('../models/blacklist'); 
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY; 
 adm_login = process.env.ADMIN_LOGIN; 
-adm_password = process.env.ADMIN_PASSWORD; 
+adm_password = process.env.ADMIN_PASSWORD;  
+
+// Register User : 
 
 exports.register = function(req, res){
 
@@ -30,6 +33,8 @@ exports.register = function(req, res){
         }
     };
 
+// Login User : 
+
 exports.login = function(req, res){
 
     User.findOne({email: req.body.email}, function(err, user){
@@ -54,6 +59,9 @@ exports.login = function(req, res){
     });
 };
 
+
+// Login Admin : 
+
 exports.logAdmin = function(req, res){
     
     if (req.body.name == adm_login && req.body.password == adm_password) {
@@ -63,4 +71,16 @@ exports.logAdmin = function(req, res){
 
     else
         res.status (400).json ({auth: false, message: "Wrong name or password"});
+}
+
+// Log Out : 
+
+exports.logout = function (req, res){
+
+    if(req.headers["x-access-token"]){
+        
+        Blacklist.create({token: req.headers["x-access-token"]}, function(err, result){
+            res.status(200).json ("Logout successfully"); 
+        })
+    }
 }
