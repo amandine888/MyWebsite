@@ -25,6 +25,7 @@ Userscontroller = require ('./controllers/users');
 Assocontroller = require ('./controllers/crudAsso'); 
 Eventcontroller = require ('./controllers/crudEvent');
 Tagcontroller = require ('./controllers/crudTag'); 
+Favcontroller = require ('./controllers/crudFav'); 
 
 
 // Route test : 
@@ -124,6 +125,34 @@ app.route('/changetag').put(Tagcontroller.updateTag);
 
 // Route to delete a tag : 
 app.route('/deletetag').delete(Tagcontroller.deleteTag); 
+
+
+// Favorite : 
+
+// Route to create a new favorite : 
+app.route('/newfav').post(Favcontroller.newFav); 
+
+// Route to delete a favorite by id : 
+app.route('/deletefav').delete(Favcontroller.deleteFav); 
+
+// Route to delete all favorites : 
+app.route('/deleteallfav').delete(Favcontroller.deleteAllFav); 
+
+// Route to count all favorites : 
+app.route('/countfav').get(Favcontroller.countFav); 
+
+//Route to count all the associations in favorite : 
+app.route('/countassofav').get(Favcontroller.countAssoFav); 
+
+// Route to count all the events in favorite : 
+app.route('/counteventfav').get(Favcontroller.countEventFav); 
+
+// Route to find all associations saved in favorite : 
+app.route('/getassoFav').get(Favcontroller.getAssoInFav); 
+
+// Route to find all events saved in favorite : 
+app.route('/geteventfav').get(Favcontroller.getEventInFav); 
+
 
 // Application listening (on port 3050, declared above)
 app.listen(port);

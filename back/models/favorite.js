@@ -1,9 +1,6 @@
 const mongoose = require('mongoose'); 
 
 let favoriteSchema = new mongoose.Schema ({
-    total: {
-        type: 'number', 
-    }, 
 
     userId: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
@@ -20,6 +17,7 @@ let favoriteSchema = new mongoose.Schema ({
     tagId: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'Tag'
     }],
+
 
 })
 
