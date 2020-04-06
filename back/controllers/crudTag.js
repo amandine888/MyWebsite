@@ -115,11 +115,23 @@ exports.findAllTags = function (req, res){
     })
 }
 
-// Find all associations into a tag by id : 
+// Find all associations into a tag by id ( public ): 
 
 exports.findTagAsso = function (req, res){
 
     Tag.findOne({_id: req.body.id}).populate('assoId[]').exec(function(err, tag){
+        if (err)
+            res.status(400).json(err)
+        else 
+            res.status(200).json(tag)
+    })
+}
+
+// Find all events into a tag by id ( public ): 
+
+exports.findTagEvent = function (req, res){
+
+    Tag.findOne({_id: req.body.id}).populate('eventId[]').exec(function(err, tag){
         if (err)
             res.status(400).json(err)
         else 

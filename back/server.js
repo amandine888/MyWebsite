@@ -33,6 +33,7 @@ app.route('/').get(function(req, res){
     res.send('hello world !');
 });
 
+
 // Authentification : 
 
 // Route register : 
@@ -43,6 +44,7 @@ app.route('/login').post(Authcontroller.login);
 
 // Route admin login : 
 app.route('/adminlogin').post(Authcontroller.logAdmin);
+
 
 
 // User : 
@@ -61,6 +63,7 @@ app.route('/deleteuser').delete(Userscontroller.deleteUser);
 
 // Route to find user's favorites : 
 app.route('/favuser').get(Userscontroller.getFavUser); 
+
 
 
 // Association : 
@@ -118,6 +121,7 @@ app.route('/changevent').put(Eventcontroller.updateEvent);
 app.route('/deletevent').delete(Eventcontroller.deleteEvent); 
 
 
+
 // Tag : 
 
 // Route to create a new tag : 
@@ -129,17 +133,21 @@ app.route('/tagbyid').get(Tagcontroller.findTagById);
 // Route to find all tags : 
 app.route('/tagall').get(Tagcontroller.findAllTags); 
 
-// route to find a tag by name : 
+// Route to find a tag by name : 
 app.route('/tagbyname').get(Tagcontroller.findTagByName); 
 
-// route to find a tag by id and get all associations linked : 
+// Route to find a tag by id and get all his related associations : 
 app.route('/tagasso').get(Tagcontroller.findTagAsso); 
+
+// Route to find a tag by id and get all his related events : 
+app.route('/tagevent').get(Tagcontroller.findTagEvent); 
 
 // Route to update a tag : 
 app.route('/changetag').put(Tagcontroller.updateTag);
 
 // Route to delete a tag : 
 app.route('/deletetag').delete(Tagcontroller.deleteTag); 
+
 
 
 // Favorite : 
@@ -156,7 +164,7 @@ app.route('/deleteallfav').delete(Favcontroller.deleteAllFav);
 // Route to count all favorites : 
 app.route('/countfav').get(Favcontroller.countFav); 
 
-//Route to count all the associations in favorite : 
+// Route to count all the associations in favorite : 
 app.route('/countassofav').get(Favcontroller.countAssoFav); 
 
 // Route to count all the events in favorite : 
