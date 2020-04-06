@@ -1,4 +1,5 @@
 const Favorite = require ('../models/favorite'); 
+Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY;
@@ -8,11 +9,11 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.newFav = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id: decoded.id}){
@@ -39,11 +40,11 @@ exports.newFav = function (req, res) {
 
 exports.deleteFav = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){
@@ -63,11 +64,11 @@ exports.deleteFav = function (req, res) {
 
 exports.deleteAllFav = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){
@@ -87,11 +88,11 @@ exports.deleteAllFav = function (req, res) {
 
 exports.countFav =  function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){
@@ -111,11 +112,11 @@ exports.countFav =  function (req, res) {
 
 exports.countAssoFav =  function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){
@@ -136,11 +137,11 @@ exports.countAssoFav =  function (req, res) {
 
 exports.countEventFav =  function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){
@@ -160,11 +161,11 @@ exports.countEventFav =  function (req, res) {
 
 exports.getAssoInFav =  function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){
@@ -184,11 +185,11 @@ exports.getAssoInFav =  function (req, res) {
 
 exports.getEventInFav =  function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if({_id : decoded.id}){

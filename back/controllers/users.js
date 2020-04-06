@@ -1,5 +1,4 @@
 const User = require ('../models/user'); 
-const Blacklist = require ('../models/blacklist'); 
 Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
@@ -15,7 +14,7 @@ exports.getUserById = function (req, res){
             console.log(err); 
 
             if (err) {
-                res.status(401).json('No token provided'); 
+                res.status(401).json(err); 
                 }
 
             else if ({_id : decoded.id}){
@@ -35,11 +34,11 @@ exports.getUserById = function (req, res){
 
 exports.getAllUser = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }  
         
         else if(decoded.admin){
@@ -57,11 +56,11 @@ exports.getAllUser = function (req, res) {
 
 exports.updateUser = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }
 
         else if ({_id : decoded.id}){
@@ -79,11 +78,11 @@ exports.updateUser = function (req, res) {
 
 exports.deleteUser = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }  
         
         else if(decoded.admin){
@@ -101,11 +100,11 @@ exports.deleteUser = function (req, res) {
 
 exports.getFavUser = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }
 
         else if ({_id : decoded.id}){

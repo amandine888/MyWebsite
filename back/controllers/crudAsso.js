@@ -1,4 +1,5 @@
 const Asso = require ('../models/asso'); 
+Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY;
@@ -8,13 +9,13 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.createAsso = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"] , jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"] , jwt_secret, function (err, decoded){
         // console.log ("decoded:".decoded)
         // console.log("headers", req.headers)
 
         if (err){
             // console.log (err)
-            res.status(400).json(err);
+            res.status(401).json(err);
         }  
         
         else if(decoded.admin){
@@ -33,11 +34,11 @@ exports.createAsso = function (req, res) {
 
 exports.updateAsso = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if(decoded.admin){
@@ -55,11 +56,11 @@ exports.updateAsso = function (req, res) {
 
 exports.updateNameAsso = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }
 
         else if (decoded.admin){
@@ -77,11 +78,11 @@ exports.updateNameAsso = function (req, res) {
 
 exports.deleteAsso = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err); 
         }  
         
         else if(decoded.admin){

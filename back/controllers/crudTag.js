@@ -1,4 +1,5 @@
 const Tag = require ('../models/tag'); 
+Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY; 
@@ -7,11 +8,11 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.createTag = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }  
         
         else if(decoded.admin){
@@ -35,11 +36,11 @@ exports.createTag = function (req, res) {
 
 exports.updateTag = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }  
         
         else if(decoded.admin){
@@ -57,11 +58,11 @@ exports.updateTag = function (req, res) {
 
 exports.deleteTag = function (req, res) {
 
-    jwt.verify(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
-            return ('Route not allowed')
+            res.status(401).json(err);
         }  
         
         else if(decoded.admin){
