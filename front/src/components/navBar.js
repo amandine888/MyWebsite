@@ -1,12 +1,11 @@
 import React, { Component } from 'react'; 
 import {withRouter} from 'react-router-dom'; 
 import SimpleMenu from './burgerMenu';
+import MenuConnect from './connectIcon';
 import { styled } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import PersonIcon from '@material-ui/icons/Person';
 
 const Typo = styled(Typography)({
 
@@ -23,12 +22,13 @@ const Menu = styled(Toolbar)({
     justifyContent: 'space-between',
 })
 
-const Iconlogin = styled(Button)({
-
-    color: '#1A1423',
-})
-
 class Nav extends React.Component {
+
+    constructor (props) {
+        super (props); 
+
+        
+    }
 
     render (){
 
@@ -38,9 +38,7 @@ class Nav extends React.Component {
                 <Menu>
                 <SimpleMenu/>
                 <Typo variant="h1">circé</Typo>
-                <Iconlogin>
-                <PersonIcon fontSize='large'></PersonIcon>
-                </Iconlogin>
+                <MenuConnect/>
                 </Menu>
                 </AppBar>
             </div>
