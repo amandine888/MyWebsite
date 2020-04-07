@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/core/styles';
 import './../mystyle.css';
 
-const Styles = styled(Button)({
-        color: 'green',
-})
+// const Styles = styled(Button)({
+//         color: 'green',
+// })
 
 class Login extends React.Component {
 
@@ -20,11 +20,42 @@ class Login extends React.Component {
 
         //bind : 
 
+        this.handleChange = this.handleChange.bind(this); 
+        this.connect = this.connect.bind(this); 
+
     }
 
     // props : 
 
+    handleChange (e) {
+        let ref = e.target.name; 
+        let value = e.target.value; 
 
+        this.setState ({
+            [ref]: value
+        });
+    }
+
+    connect (e) {
+        console.log(this.state)
+        fetch ('http://localhost:3050/login', {
+            headers:
+            {
+                "Accept" : "application/json", 
+                "Content-Type": "application/json"},
+            method: 'Post', 
+            body: JSON.stringify(this.state),
+        })
+        .then((res) =>{
+            if (res.status == 200) {
+                res.json().then(res => {
+                    localStorage.setItem('token', res.token);
+                    this.props.history.push('/');
+                })
+            }
+        })
+        .catch(error => console.log(error));
+    }
 
     render () {
         return (
@@ -33,18 +64,18 @@ class Login extends React.Component {
                     <div className='titleForm'>
                         <h2>Connexion</h2>
                     </div>
-                    <form className='fieldContainer'>
+                    <div className='fieldContainer'>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Email</label>
-                            <input className='styleInput' value = {this.state.email} type='email'></input>
+                            <input className='styleInput' type='email' name='email' value = {this.state.email} onChange={this.handleChange} required></input>
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Password</label>
-                            <input className='styleInput' value = {this.state.password} type='password'></input>
+                            <input className='styleInput' type='password' name='password' value = {this.state.password} onChange={this.handleChange} required></input>
                             <p className='textForm'>Mot de passe oublié ? Cliquez sur ce lien</p>
                         </div>
-                        <button className='styleButton'>Se connecter</button>
-                    </form>
+                        <button className='styleButton' onClick={this.connect}>Se connecter</button>
+                    </div>
                 </div>
             </div>
         )
