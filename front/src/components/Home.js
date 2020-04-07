@@ -3,8 +3,8 @@ import {withRouter} from 'react-router-dom';
 import Nav from './navBar'; 
 import Footer from './footer';
 import News from './news'; 
-import './../mystyle.css';
 import DialogSelect from './search';
+import './../mystyle.css';
 import Button from '@material-ui/core/Button';
 
 const logStyle = {
