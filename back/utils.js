@@ -14,7 +14,7 @@ exports.controlAccess = function (token, jwt_secret, callback){
                 if(blacklisted)
                     callback("token blacklisted", decoded); 
                 else    
-                    callback(null, decoded); 
+                    callback(err, decoded); // modif err au lieu de null
             })
         }
     })

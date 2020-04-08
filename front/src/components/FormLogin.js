@@ -37,11 +37,11 @@ class Login extends React.Component {
     }
 
     connect (e) {
-        console.log(this.state)
+        // console.log(this.state)
         fetch ('http://localhost:3050/login', {
             headers:
             {
-                "Accept" : "application/json", 
+                Accept : "application/json", 
                 "Content-Type": "application/json"},
             method: 'Post', 
             body: JSON.stringify(this.state),
@@ -50,7 +50,8 @@ class Login extends React.Component {
             if (res.status == 200) {
                 res.json().then(res => {
                     localStorage.setItem('token', res.token);
-                    this.props.history.push('/');
+                    this.props.history.push('/userAccount');
+                    console.log(res.token)
                 })
             }
         })
