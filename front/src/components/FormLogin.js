@@ -22,6 +22,7 @@ class Login extends React.Component {
 
         this.handleChange = this.handleChange.bind(this); 
         this.connect = this.connect.bind(this); 
+        // this.nameUser = this.nameUser.bind(this); 
 
     }
 
@@ -37,14 +38,20 @@ class Login extends React.Component {
     }
 
     connect (e) {
-        // console.log(this.state)
+        
+        const {email,password} = this.state; 
+
         fetch ('http://localhost:3050/login', {
+            method: 'Post',
+            mode: 'cors', 
+            body: JSON.stringify({
+                email, 
+                password
+            }), 
             headers:
             {
                 Accept : "application/json", 
                 "Content-Type": "application/json"},
-            method: 'Post', 
-            body: JSON.stringify(this.state),
         })
         .then((res) =>{
             if (res.status == 200) {
@@ -57,6 +64,10 @@ class Login extends React.Component {
         })
         .catch(error => console.log(error));
     }
+
+    // nameUser () {
+        
+    // }
 
     render () {
         return (

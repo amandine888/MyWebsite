@@ -39,7 +39,7 @@ export default function MenuProfil() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}>
                     <MenuItem onClick={handleClose}><Link to = '/connexion'>Mon compte</Link></MenuItem>
-                    <Button variant="contained" type="button" onClick={this.handleClick} style={logStyle}>Déconnexion</Button>
+                    <Button variant="contained" type="button" onClick={handleClick}>Déconnexion</Button>
             </Menu>
         </div>
     );

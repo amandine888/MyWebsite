@@ -13,7 +13,8 @@ const express = require('express'),
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json()); 
-app.use(cors()); 
+let corsOption = {origin : 'http://localhost:3000'}
+app.use(cors(corsOption)); 
 app.use(bearerToken()); 
 
 // Database connexion : 
