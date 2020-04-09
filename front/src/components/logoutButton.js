@@ -13,8 +13,22 @@ class Logout extends React.Component {
     }
 
     logout () {
-        localStorage.removeItem('token'); 
-        this.props.history.push('/'); 
+        let token = localStorage.getItem('token'); 
+        fetch("http://localhost:3050/logout", {
+            method: "get", 
+            headers: {
+                "Authorization": 'Bearer ' + token
+            }
+        })
+        .then(res => {
+            if(res.status == 200){
+                res.json().then(res => {
+                localStorage.removeItem('token'); 
+                this.props.history.push('/'); 
+            })
+            }
+        })
+        .catch(error => console.log(error));
     }
 
     render () {

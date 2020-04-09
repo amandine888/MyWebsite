@@ -31,7 +31,14 @@ class Useraccount extends  React.Component {
     };
 
     componentDidMount (){
-        fetch('http://localhost:3050/userid')
+        let token = localStorage.getItem('token');
+        fetch('http://localhost:3050/userid',
+        {
+            method: "get", 
+            headers: {
+                "Authorization": 'Bearer ' + token
+            }
+        })
             .then(response => response.json())
             .then(json => console.log(json))
     }

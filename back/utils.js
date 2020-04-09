@@ -1,8 +1,9 @@
 const Blacklist = require ('./models/blacklist'); 
 const jwt = require ('jsonwebtoken'); 
+bearerToken = require('express-bearer-token')
 
 exports.controlAccess = function (token, jwt_secret, callback){
- 
+
     jwt.verify(token, jwt_secret, function(err, decoded){
         if (err)
             callback(err, decoded); 
