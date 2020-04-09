@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import {Route, Switch, Link, BrowserRouter as Router} from 'react-router-dom'; 
 import { styled } from '@material-ui/core/styles';
+import Logout from './logoutButton'; 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -27,6 +28,7 @@ export default function MenuProfil() {
         setAnchorEl(null);
     };
 
+
     return (
         <div>
             <Iconlogin edge="start" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
@@ -39,7 +41,7 @@ export default function MenuProfil() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}>
                     <MenuItem onClick={handleClose}><Link to = '/connexion'>Mon compte</Link></MenuItem>
-                    <Button variant="contained" type="button" onClick={handleClick}>Déconnexion</Button>
+                    <Logout/>
             </Menu>
         </div>
     );

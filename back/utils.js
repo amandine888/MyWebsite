@@ -1,9 +1,8 @@
 const Blacklist = require ('./models/blacklist'); 
-jwt = require ('jsonwebtoken'); 
-
+const jwt = require ('jsonwebtoken'); 
 
 exports.controlAccess = function (token, jwt_secret, callback){
-    
+ 
     jwt.verify(token, jwt_secret, function(err, decoded){
         if (err)
             callback(err, decoded); 

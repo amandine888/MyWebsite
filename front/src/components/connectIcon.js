@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import {Route, Switch, Link, BrowserRouter as Router} from 'react-router-dom'; 
+import Interactive from 'react-interactive';
 import { styled } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -38,8 +39,12 @@ export default function MenuConnect() {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}>
-                    <MenuItem onClick={handleClose}><Link to = '/connexion'>Connexion</Link></MenuItem>
-                    <MenuItem onClick={handleClose}><Link to = '/connexion'>Inscription</Link></MenuItem>
+                    <MenuItem onClick={handleClose}><Interactive 
+                    as= {Link}
+                    to = '/connexion#formLogin'>Connexion</Interactive></MenuItem>
+                    <MenuItem onClick={handleClose}><Interactive
+                    as= {Link} 
+                    to = '/connexion#formRegister'>Inscription</Interactive></MenuItem>
             </Menu>
         </div>
     );

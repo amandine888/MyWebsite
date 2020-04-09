@@ -1,6 +1,8 @@
 import React from 'react';
 import {Route, Switch, Link, BrowserRouter as Router} from 'react-router-dom'; 
 import Connexion from './components/connexion'; 
+import Login from './components/formLogin'; 
+import Register from './components/formRegister'; 
 import Home from './components/home'; 
 import Associations from './components/associations'; 
 import Events from './components/events'; 
