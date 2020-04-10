@@ -9,7 +9,7 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.createAsso = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"] , jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token , jwt_secret, function (err, decoded){
         // console.log ("decoded:".decoded)
         // console.log("headers", req.headers)
 
@@ -34,7 +34,7 @@ exports.createAsso = function (req, res) {
 
 exports.updateAsso = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -56,7 +56,7 @@ exports.updateAsso = function (req, res) {
 
 exports.updateNameAsso = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -78,7 +78,7 @@ exports.updateNameAsso = function (req, res) {
 
 exports.deleteAsso = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
