@@ -9,7 +9,7 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.createEvent = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -31,7 +31,7 @@ exports.createEvent = function (req, res) {
 
 exports.updateEvent = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
@@ -53,7 +53,7 @@ exports.updateEvent = function (req, res) {
 
 exports.deleteEvent = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)

@@ -2,6 +2,7 @@ const Favorite = require ('../models/favorite');
 Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
+bearerToken = require('express-bearer-token');
 jwt_secret = process.env.JWT_SECRET_KEY;
 
 
@@ -9,17 +10,17 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.newFav = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id: decoded.id}){
+        else if(decoded.id){
 
             let fav = new Favorite ({
-                userId : [req.body.id], 
+                userId : [decoded.id], 
                 eventId : [req.body.id],
                 assoId : [req.body.id],
                 tagId : [req.body.id]
@@ -40,14 +41,14 @@ exports.newFav = function (req, res) {
 
 exports.deleteFav = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.deleteOne({_id: req.body.id}, function(err, fav){
 
@@ -64,14 +65,14 @@ exports.deleteFav = function (req, res) {
 
 exports.deleteAllFav = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.deleteMany({}, function(err, fav){
 
@@ -88,14 +89,14 @@ exports.deleteAllFav = function (req, res) {
 
 exports.countFav =  function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.count({}, function(err, fav){
 
@@ -112,14 +113,14 @@ exports.countFav =  function (req, res) {
 
 exports.countAssoFav =  function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.count({assoId: req.body['assoId[]']}, function(err, fav){
 
@@ -137,14 +138,14 @@ exports.countAssoFav =  function (req, res) {
 
 exports.countEventFav =  function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.count({eventId: req.body['eventId[]']}, function(err, fav){
 
@@ -161,14 +162,14 @@ exports.countEventFav =  function (req, res) {
 
 exports.getAssoInFav =  function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.find({assoId: req.body['assoId[]']}, function(err, fav){
 
@@ -185,14 +186,14 @@ exports.getAssoInFav =  function (req, res) {
 
 exports.getEventInFav =  function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
             res.status(401).json(err); 
         }  
         
-        else if({_id : decoded.id}){
+        else if(decoded.id){
 
             Favorite.find({eventId: req.body['eventId[]']}, function(err, fav){
 
