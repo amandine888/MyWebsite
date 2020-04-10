@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import decode from 'jwt-decode'; 
 import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/core/styles';
 import './../mystyle.css';
@@ -22,6 +23,7 @@ class Login extends React.Component {
 
         this.handleChange = this.handleChange.bind(this); 
         this.connect = this.connect.bind(this); 
+        // this.nameUser = this.nameUser.bind(this); 
 
     }
 
@@ -37,25 +39,36 @@ class Login extends React.Component {
     }
 
     connect (e) {
-        console.log(this.state)
+        
+        const {email,password} = this.state; 
+
         fetch ('http://localhost:3050/login', {
+            method: 'Post',
+            mode: 'cors', 
+            body: JSON.stringify({
+                email, 
+                password
+            }), 
             headers:
             {
-                "Accept" : "application/json", 
+                Accept : "application/json", 
                 "Content-Type": "application/json"},
-            method: 'Post', 
-            body: JSON.stringify(this.state),
         })
         .then((res) =>{
             if (res.status == 200) {
                 res.json().then(res => {
                     localStorage.setItem('token', res.token);
-                    this.props.history.push('/');
+                    this.props.history.push('/userAccount');
+                    console.log(res.token)
                 })
             }
         })
         .catch(error => console.log(error));
     }
+
+    // nameUser () {
+        
+    // }
 
     render () {
         return (

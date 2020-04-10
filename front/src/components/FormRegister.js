@@ -42,6 +42,7 @@ class Register extends React.Component {
     // }
 
     send (e) {
+        
         console.log(this.state);
         const { pseudo, email, password} = this.state; 
 
@@ -66,6 +67,7 @@ class Register extends React.Component {
                 if (response.ok) {
                     response.json()
                     .then (console.log);
+                    this.props.history.push('/connexion');
                 }
                 else {
                     console.error('server response : ' +response.status); 

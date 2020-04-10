@@ -49,7 +49,9 @@ exports.login = function(req, res){
             bcrypt.compare(req.body.password, user.password, function(err, result){
                 if (result) {
                     let token = jwt.sign({id: user._id, admin: false}, jwt_secret, {expiresIn: '1h'}); 
-                    res.status(200).json({auth: true, user : user, token: token}); 
+                    res.status(200).json({auth: true, user: user, token: token}); 
+                        
+                        console.log(token)
                 }
 
                 else
@@ -77,9 +79,9 @@ exports.logAdmin = function(req, res){
 
 exports.logout = function (req, res){
 
-    if(req.headers["x-access-token"]){
+    if(req.token){
         
-        Blacklist.create({token: req.headers["x-access-token"]}, function(err, result){
+        Blacklist.create({token: req.token}, function(err, result){
             res.status(200).json ("Logout successfully"); 
         })
     }

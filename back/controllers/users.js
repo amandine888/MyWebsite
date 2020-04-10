@@ -2,6 +2,7 @@ const User = require ('../models/user');
 Utils = require ('../utils');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
+bearerToken = require('express-bearer-token');
 jwt_secret = process.env.JWT_SECRET_KEY; 
 
 
@@ -9,7 +10,7 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.getUserById = function (req, res){
 
-        Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function(err, decoded){
+        Utils.controlAccess(req.token, jwt_secret, function(err, decoded){
 
             console.log(err); 
 
@@ -17,17 +18,36 @@ exports.getUserById = function (req, res){
                 res.status(401).json(err); 
                 }
 
-            else if ({_id : decoded.id}){
+            else if (decoded.id){
 
                 User.findOne({_id: decoded.id}, function(err, user){
                     if (err)
                         res.status(400).json(err);
                     else
                         res.status(200).json(user);
+                        console.log(decoded)
                 })
             }
         })
 }
+
+// exports.getUserById = function (req, res){
+
+//     jwt.verify(req.token, jwt_secret, function(err, decoded){
+//         console.log(err); 
+//         if (err) {
+//                 res.status(401).json('No token provided'); 
+//             }
+//             else {
+//                 User.findOne({_id: decoded.id}, function(err, user){
+//                     if (err)
+//                         res.status(400).json(err);
+//                     else
+//                         res.status(200).json(user);
+//                 })
+//             }
+//     })
+// } 
 
 // Find all users ( admin ) : 
 
@@ -100,7 +120,7 @@ exports.deleteUser = function (req, res) {
 
 exports.getFavUser = function (req, res) {
 
-    Utils.controlAccess(req.headers["x-access-token"], jwt_secret, function (err, decoded){
+    Utils.controlAccess(req.token, jwt_secret, function (err, decoded){
 
         if (err){
             console.log (err)
