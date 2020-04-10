@@ -6,6 +6,7 @@ import Register from './components/formRegister';
 import Home from './components/home'; 
 import Associations from './components/associations'; 
 import Events from './components/events'; 
+import LogAdmin from './components/backOffice/loginAdmin'; 
 import Useraccount from './components/userAccount';
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
           <Route exact path='/userAccount' component={Useraccount}/>
           <Route exact path='/associations' component={Associations}/>
           <Route exact path='/events' component={Events}/>
+          <Route exact path='/logAdmin' component={LogAdmin}/>
         </Switch>
       </Router>
     )
