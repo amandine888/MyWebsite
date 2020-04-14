@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import {Route, Switch, Link, BrowserRouter as Router, withRouter} from 'react-router-dom'; 
+import React from 'react';
+import { withRouter } from 'react-router-dom'; 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -45,7 +45,7 @@ class LogAdmin extends React.Component {
             if (res.status == 200) {
                 res.json().then(res => {
                     localStorage.setItem('token', res.token);
-                    this.props.history.push('/');
+                    this.props.history.push('/secret');
                     console.log(res.token)
                 })
             }
