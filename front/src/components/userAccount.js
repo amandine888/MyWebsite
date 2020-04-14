@@ -1,6 +1,5 @@
 import React from 'react'; 
-import {withRouter} from 'react-router-dom';
-import decode from 'jwt-decode'; 
+import { withRouter } from 'react-router-dom';
 import Nav from './navBar';
 import JwtDecode from 'jwt-decode';
 
