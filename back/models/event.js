@@ -1,13 +1,16 @@
 const mongoose = require ('mongoose'); 
+const geoCoder = require ('../utils/geocoder'); 
 
 let eventSchema = new mongoose.Schema ({
     nameEvent: {
         type: 'string', 
+        required: [true, 'Please add a name']
     },
 
     dateEvent: { 
         type: "date",
         default: Date.now(), 
+        required: [true, 'Please add a date']
     },
 
     description: {
@@ -15,9 +18,8 @@ let eventSchema = new mongoose.Schema ({
     },
 
     address: {
-        street: { type: "string" },
-        postalCode : { type: "string" }, 
-        city: { type: "string" },
+        type: String,
+        required: [true, 'Please add an address']
     },
 
     location: {
@@ -33,7 +35,7 @@ let eventSchema = new mongoose.Schema ({
 }); 
 
 // Convert address to geoCode : 
-eventSchema.pre('save', async function convertBefore(next) {
+eventSchema.pre('save', async function (next) {
     const loc = await geoCoder.geocode(this.address);
     this.location = {
         type: 'Point',

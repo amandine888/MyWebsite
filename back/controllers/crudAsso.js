@@ -1,5 +1,6 @@
 const Asso = require ('../models/asso'); 
-Utils = require ('../utils');
+const geoCoder = require ('../utils/geocoder'); 
+Utils = require ('../utils/checkToken');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY;
@@ -14,7 +15,6 @@ exports.createAsso = function (req, res) {
         // console.log("headers", req.headers)
 
         if (err){
-            // console.log (err)
             res.status(401).json(err);
         }  
         

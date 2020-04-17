@@ -1,8 +1,10 @@
 const mongoose = require ('mongoose'); 
+const geoCoder = require ('../utils/geocoder'); 
 
 let assoSchema = new mongoose.Schema ({
     nameAsso: {
         type: 'string', 
+        required: [true, 'Please add a name']
     },
     
     contact: {
@@ -10,9 +12,8 @@ let assoSchema = new mongoose.Schema ({
     }, 
 
     address: {
-        street: { type: "string" },
-        postalCode : { type: "string" }, 
-        city: { type: "string" },
+        type: String,
+        required: [true, 'Please add an address']
     },
 
     location: {
@@ -36,7 +37,8 @@ let assoSchema = new mongoose.Schema ({
 }); 
 
 // Convert address to geoCode : 
-assoSchema.pre('save', async function convertBefore(next) {
+assoSchema.pre('save', async function (next) {
+    
     const loc = await geoCoder.geocode(this.address);
     this.location = {
         type: 'Point',
