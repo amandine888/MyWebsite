@@ -1,9 +1,9 @@
 import React from 'react'; 
 import {withRouter} from 'react-router-dom';
-import Login from './formLogin'; 
-import Register from './formRegister'; 
+import Login from './FormLogin'; 
+import Register from './FormRegister'; 
 import Nav from './navBar';
-import Footer from './footer'; 
+import Footer from './Footer'; 
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
