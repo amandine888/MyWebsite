@@ -45,7 +45,7 @@ class LogAdmin extends React.Component {
             if (res.status == 200) {
                 res.json().then(res => {
                     localStorage.setItem('token', res.token);
-                    this.props.history.push('/secret');
+                    this.props.history.push('/office');
                     console.log(res.token)
                 })
             }

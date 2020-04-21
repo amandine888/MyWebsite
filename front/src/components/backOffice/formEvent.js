@@ -1,5 +1,21 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React from 'react'; 
+import { withRouter } from 'react-router-dom'; 
+
+// import CSS : 
+import './../../Mystyle.css'; 
+import './../backOffice/styleBackOffice.css'; 
+
+// Material UI : 
+import { styled } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import SaveIcon from '@material-ui/icons/Save';
+
+// CSS : 
+
+const ButtonSave = styled(Button)({
+    backgroundColor: '#6A9CFD',
+})
 
 class FormEvent extends React.Component {
 
@@ -8,19 +24,23 @@ class FormEvent extends React.Component {
 
 
         this.state = {
-            nameEvent: '', 
-            dateEvent:'', 
+            nameEvent: '',
+            dateEvent: '', 
             description: '', 
-            location: '',
-            tags: '',
+            address : '', 
+            category: '', 
         }
 
         this.handleChange = this.handleChange.bind(this); 
     }
 
     handleChange = (e) => {
+
+        let ref = e.target.name; 
+        let value = e.target.value; 
+
         this.setState({
-            nameEvent: e.target.value, 
+            [ref] : value, 
         })
     }
 
@@ -28,19 +48,13 @@ class FormEvent extends React.Component {
     render() {
         return (
             <div>
-                <form>
-                    <label>Name</label>
-                    <input type='text' name='nameEvent' value={this.state.nameEvent} onChange={this.handleChange}></input>
-                    <label>Date</label>
-                    {/* <input type='text' value={this.state.adress} onChange={this.handleChange}></input> */}
-                    <label>Description</label>
-                    <input type='text' value={this.state.description} onChange={this.handleChange}></input>
-                    <label>Location</label>
-                    <input type='text' value={this.state.location} onChange={this.handleChange}></input>
-                    <label>Tags</label>
-                    <input type='text' value={this.state.tags} onChange={this.handleChange}></input>
-                </form>
-                <button type='submit'>Enregistrer</button>
+                <div className="formAsso">
+                    <TextField id="outlined-basic" label="Nom" variant="outlined" name="nameEvent" value= {this.state.nameEvent} onChange={this.handleChange} />
+                    <TextField id="outlined-basic" type="date" variant="outlined" name="dateEvent" value= {this.state.dateEvent} onChange={this.handleChange} />
+                    <TextField id="outlined-textarea" label="Description" variant="outlined" multiline name="description" value= {this.state.description} onChange={this.handleChange} />
+                    <TextField id="outlined-basic" label="Adresse" variant="outlined" name="address" value= {this.state.address} onChange={this.handleChange} />
+                    <ButtonSave variant="contained" startIcon={<SaveIcon />}>Enregistrer</ButtonSave>
+                </div>
             </div>
         )
     }

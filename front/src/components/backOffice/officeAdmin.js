@@ -1,15 +1,21 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'; 
-import FormAsso from './formAsso'; 
-import FormEvent from './formEvent';
+import AssoOffice from './assoOffice'; 
+import EventOffice from './eventOffice'; 
+
+// import CSS : 
+import './../../Mystyle.css'; 
+import './../backOffice/styleBackOffice.css'; 
+
 
 class OfficeAdmin extends React.Component {
 
     render () {
+        
         return (
             <div>
-                <FormAsso/>
-                <FormEvent/>
+                    <AssoOffice/>
+                    <EventOffice/>
             </div>
         )
     }
