@@ -1,6 +1,9 @@
-const Blacklist = require ('./models/blacklist'); 
+const Blacklist = require ('../models/blacklist'); 
 const jwt = require ('jsonwebtoken'); 
-bearerToken = require('express-bearer-token')
+bearerToken = require('express-bearer-token'); 
+require('dotenv').config();
+
+// Method Check token / token blacklisted : 
 
 exports.controlAccess = function (token, jwt_secret, callback){
 
@@ -18,4 +21,4 @@ exports.controlAccess = function (token, jwt_secret, callback){
             })
         }
     })
-}
+}; 

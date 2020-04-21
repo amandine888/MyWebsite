@@ -1,6 +1,6 @@
 import React, { Component, useState  } from 'react';
 import {withRouter} from 'react-router-dom';
-import './../mystyle.css';
+import './../Mystyle.css';
 import { styled } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';

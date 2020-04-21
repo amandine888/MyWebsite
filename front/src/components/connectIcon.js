@@ -41,10 +41,10 @@ export default function MenuConnect() {
                 onClose={handleClose}>
                     <MenuItem onClick={handleClose}><Interactive 
                     as= {Link}
-                    to = '/connexion#formLogin'>Connexion</Interactive></MenuItem>
+                    to = '/connexion#FormLogin'>Connexion</Interactive></MenuItem>
                     <MenuItem onClick={handleClose}><Interactive
                     as= {Link} 
-                    to = '/connexion#formRegister'>Inscription</Interactive></MenuItem>
+                    to = '/connexion#FormRegister'>Inscription</Interactive></MenuItem>
             </Menu>
         </div>
     );

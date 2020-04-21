@@ -1,5 +1,5 @@
 const User = require ('../models/user'); 
-Utils = require ('../utils');
+Utils = require ('../utils/checkToken');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 bearerToken = require('express-bearer-token');

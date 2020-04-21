@@ -1,5 +1,6 @@
 const Event = require ('../models/event'); 
-Utils = require ('../utils');
+const geoCoder = require ('../utils/geocoder'); 
+Utils = require ('../utils/checkToken');
 bcrypt = require ('bcrypt'); 
 jwt = require ('jsonwebtoken'); 
 jwt_secret = process.env.JWT_SECRET_KEY; 
