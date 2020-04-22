@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'; 
 import AssoOffice from './assoOffice'; 
 import EventOffice from './eventOffice'; 
+import CrudAsso from './crudAsso'; 
 
 // import CSS : 
 import './../../Mystyle.css'; 
@@ -14,8 +15,9 @@ class OfficeAdmin extends React.Component {
         
         return (
             <div>
-                    <AssoOffice/>
-                    <EventOffice/>
+                <AssoOffice/>
+                <CrudAsso/>
+                <EventOffice/>
             </div>
         )
     }
