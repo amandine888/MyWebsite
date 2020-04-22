@@ -1,6 +1,15 @@
 import React from 'react'; 
 import { withRouter } from 'react-router-dom'; 
 
+import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CreateIcon from '@material-ui/icons/Create';
+
+// import CSS : 
+import './../../Mystyle.css'; 
+import './../backOffice/styleBackOffice.css'; 
+
 class CrudAsso extends React.Component {
 
     constructor (props) {
@@ -40,15 +49,36 @@ class CrudAsso extends React.Component {
     render() {
         return (
             <div>
-                {this.state.asso.map(function(item, index){
-                    let display = "http://localhost:3050/" + item; 
-                    return <ul key={index}>
-                        <li>{item.nameAsso}</li>
-                        <li>{item.contact}</li>
-                        <li>{item.address}</li>
-                        <li>{item.category}</li>
-                        <li>{item.description}</li></ul>
+                <div className='displayInfo'>
+                    <div className='infoBar'>
+                        <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                        <p>Nom</p>
+                        <p>Contact</p>
+                        <p>Adresse</p>
+                        <p>Catégorie</p>
+                        <p>Description</p>
+                        <p>Actions</p>
+                    </div>
+
+                    {this.state.asso.map(function(item, index){
+                        let display = "http://localhost:3050/" + item; 
+
+                        return <ul className='listContainer' key={index}>
+                                <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                <div><li>{item.nameAsso}</li></div>
+                                <div><li>{item.contact}</li></div>
+                                <div><li>{item.address}</li></div>
+                                <div><li>{item.category}</li></div>
+                                <div><li>{item.description}</li></div>
+                                <IconButton>
+                                    <CreateIcon/>
+                                </IconButton>
+                                <IconButton>
+                                    <DeleteIcon/>
+                                </IconButton>
+                            </ul>
                 })}
+                </div>
             </div>
         )
     }

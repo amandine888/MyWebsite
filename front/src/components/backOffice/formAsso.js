@@ -1,6 +1,5 @@
 import React from 'react'; 
 import { withRouter } from 'react-router-dom'; 
-import decode from 'jwt-decode';
 
 // import CSS : 
 import './../../Mystyle.css'; 
@@ -75,7 +74,7 @@ class FormAsso extends React.Component {
     render() {
         return (
             <div>
-                <div className="formAsso">
+                <div className="formStyle">
                     <TextField id="outlined-basic" label="Nom" variant="outlined" name="nameAsso" value= {this.state.nameAsso} onChange={this.handleChange} />
                     <TextField id="outlined-basic" label="Contact" variant="outlined" name="contact" value= {this.state.contact} onChange={this.handleChange} />
                     <TextField id="outlined-basic" label="Adresse" variant="outlined" name="address" value= {this.state.address} onChange={this.handleChange} />

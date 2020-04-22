@@ -48,7 +48,7 @@ class FormEvent extends React.Component {
     render() {
         return (
             <div>
-                <div className="formAsso">
+                <div className="formStyle">
                     <TextField id="outlined-basic" label="Nom" variant="outlined" name="nameEvent" value= {this.state.nameEvent} onChange={this.handleChange} />
                     <TextField id="outlined-basic" type="date" variant="outlined" name="dateEvent" value= {this.state.dateEvent} onChange={this.handleChange} />
                     <TextField id="outlined-textarea" label="Description" variant="outlined" multiline name="description" value= {this.state.description} onChange={this.handleChange} />
