@@ -94,7 +94,7 @@ app.route('/changeasso').put(Assocontroller.updateAsso);
 app.route('/changenameasso').put(Assocontroller.updateNameAsso); 
 
 // Route to delete an association by id : 
-app.route('/deleteasso').delete(Assocontroller.deleteAsso); 
+app.route('/deleteasso/:id').delete(Assocontroller.deleteAsso); 
 
 
 
