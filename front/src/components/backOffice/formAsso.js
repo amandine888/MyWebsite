@@ -28,6 +28,7 @@ class FormAsso extends React.Component {
             address : '', 
             category: '', 
             description: '', 
+            assos: []
         }
 
         this.handleChange = this.handleChange.bind(this); 
@@ -47,6 +48,16 @@ class FormAsso extends React.Component {
     sendAsso (e) {
         let token = localStorage.getItem('token');
 
+        const newasso = { 
+            nameAsso: this.state.nameAsso,
+            contact: this.state.contact, 
+            address : this.state.address, 
+            category: this.state.category, 
+            description: this.state.description
+        }; 
+
+        let assos = [...this.state.assos, newasso]
+
         fetch ('http://localhost:3050/newasso', {
             method: "POST",
             body: JSON.stringify(this.state), 
@@ -58,7 +69,11 @@ class FormAsso extends React.Component {
         .then(res =>{
             if (res.status == 201){
                 res.json().then(res =>{
-                    console.log(res); 
+                    this.setState({
+                        message: "Done !", 
+                        assos
+                    }); 
+                    console.log (res)
                 })
             }
             else {

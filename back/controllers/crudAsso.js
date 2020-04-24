@@ -86,7 +86,7 @@ exports.deleteAsso = function (req, res) {
         }  
         
         else if(decoded.admin){
-            Asso.deleteOne({_id: req.body.id}, function(err, asso){
+            Asso.deleteOne({_id: req.params.id}, function(err, asso){
                 if (err) 
                     res.status (400).json (err)
                 else

@@ -9,18 +9,19 @@ class Button extends Component {
 
     constructor (props) {
         super (props); 
+        
     }
     render() {
 
-        const{assoDelete}= this.props; 
-        const{assoId} = this.props; 
+        const{onDelete}= this.props; 
+        const{assoID} = this.props; 
 
         return (
             <div>
                 <IconButton>
                     <CreateIcon/>
                 </IconButton>
-                <IconButton onClick={()=>assoDelete(assoId)}>
+                <IconButton onClick={()=> onDelete(assoID)}>
                     <DeleteIcon/>
                 </IconButton>
             </div>

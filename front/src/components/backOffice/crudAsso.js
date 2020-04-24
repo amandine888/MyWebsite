@@ -19,11 +19,95 @@ class CrudAsso extends React.Component {
         }
 
         this.state = {
-            asso: [],
+            assos: [],
         }
+
+        console.log(this.state.assos)
 
         this.removeAsso = this.removeAsso.bind (this); 
     }
+
+
+    componentDidMount () {
+        let token = localStorage.getItem('token'); 
+        fetch ("http://localhost:3050/assoall", {
+            method: "GET", 
+            headers: {"Authorization": 'Bearer ' + token,}
+        })
+        .then (res => {
+            if (res.status == 200){
+                res.json().then(res=>{
+                    this.setState({assos: res})
+                    console.log(res);
+                }) 
+            }
+            else {
+                res.json().then(res=>{
+                    console.log(res); 
+                })
+            }
+        })
+        .catch(error =>console.log(error)); 
+    }; 
+
+    removeAsso = (_id) => {
+        if (window.confirm('Are ou sure ? ')); 
+        let token = localStorage.getItem('token'); 
+    
+        fetch ("http://localhost:3050/deleteasso/:id" + _id,  {
+            method: "DELETE", 
+            headers: { 
+            "Content-Type": "application/json", 
+            "Authorization": 'Bearer ' + token,},  
+        })
+        .then( res=>{
+            if(res.status ==200){
+                res.json().then(res=>{
+                    const delasso = this.state.assos.filter(assos => assos.id !== assos._id); 
+                    this.setState({delasso}); 
+                        console.log('supprimé'); 
+                        console.log(delasso)
+                })
+            }
+        })
+    }; 
+
+    render() {
+        return (
+            <div>
+                <div className='displayInfo'>
+                    <div className='infoBar'>
+                        <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                        <p>Nom</p>
+                        <p>Contact</p>
+                        <p>Adresse</p>
+                        <p>Catégorie</p>
+                        <p>Description</p>
+                        <p>Actions</p>
+                    </div>
+                    
+                    {this.state.assos.map((assos, index) =>{
+                        
+                        return (<ul className='listContainer' key={index.id}>
+                                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}/>
+                                    <div><li>{assos.nameAsso}</li></div>
+                                    <div><li>{assos.contact}</li></div>
+                                    <div><li>{assos.address}</li></div>
+                                    <div><li>{assos.category}</li></div>
+                                    <div><li>{assos.description}</li></div>
+                                    <Button assoID={index.id} onDelete={this.removeAsso }/>
+                                </ul>)
+                    })}
+                </div>
+            </div>
+        )
+    }
+}
+
+export default withRouter (CrudAsso); 
+
+
+// An other way : 
 
     // componentDidMount = () => {
     //     this.getAsso(); 
@@ -64,81 +148,3 @@ class CrudAsso extends React.Component {
     //         </div>
     //     )
     // }
-
-    componentDidMount () {
-        let token = localStorage.getItem('token'); 
-        fetch ("http://localhost:3050/assoall", {
-            method: "GET", 
-            headers: {"Authorization": 'Bearer ' + token,}
-        })
-        .then (res => {
-            if (res.status == 200){
-                res.json().then(res=>{
-                    this.setState({asso: res})
-                })
-            }
-            else {
-                res.json().then(res=>{
-                    console.log(res); 
-                })
-            }
-        })
-        .catch(error =>console.log(error)); 
-    }; 
-
-    removeAsso = (assoId) => {
-        if (window.confirm('Are ou sure ? ')); 
-        let token = localStorage.getItem('token'); 
-    
-        fetch ("http://localhost:3050/deleteasso/:id" + assoId,  {
-            method: "DELETE", 
-            headers: {Accept : "application/json", 
-            "Content-Type": "application/json", 
-            "Authorization": 'Bearer ' + token,}, 
-        })
-        .then( res=>{
-            if(res.status ==200){
-                res.json().then(res=>{
-                    const assos = this.state.asso.filter(asso =>asso.id !==assoId);
-                    this.setState({assos}); 
-                        console.log('supprimé'); 
-                })
-            }
-        })
-    }; 
-
-    render() {
-        return (
-            <div>
-                <div className='displayInfo'>
-                    <div className='infoBar'>
-                        <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                        <p>Nom</p>
-                        <p>Contact</p>
-                        <p>Adresse</p>
-                        <p>Catégorie</p>
-                        <p>Description</p>
-                        <p>Actions</p>
-                    </div>
-                    
-                    {this.state.asso.map((item, index)=>{
-                        
-                        return ( <ul className='listContainer' key={index}>
-                                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}/>
-                                    {/* <div><li assoId={item.id}></li></div> */}
-                                    <div><li>{item.nameAsso}</li></div>
-                                    <div><li>{item.contact}</li></div>
-                                    <div><li>{item.address}</li></div>
-                                    <div><li>{item.category}</li></div>
-                                    <div><li>{item.description}</li></div>
-                                    <Button assoId={item.id} assoDelete={this.removeAsso }/>
-                            </ul>
-                        )
-                })}
-                </div>
-            </div>
-        )
-    }
-}
-
-export default withRouter (CrudAsso); 
