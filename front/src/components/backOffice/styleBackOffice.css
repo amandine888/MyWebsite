@@ -49,8 +49,9 @@
 /* Assos / events added */
 
 .displayInfo{
-    height: 50vh; 
+    height: 65vh; 
     overflow: scroll;
+    border-bottom: 1px solid black;
 }
 
 .listContainer{

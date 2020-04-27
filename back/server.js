@@ -122,7 +122,7 @@ app.route('/eventbydate').get(Eventcontroller.findEventbyDate);
 app.route('/changevent').put(Eventcontroller.updateEvent); 
 
 // Route to delete an event by id : 
-app.route('/deletevent').delete(Eventcontroller.deleteEvent); 
+app.route('/deletevent/:id').delete(Eventcontroller.deleteEvent); 
 
 
 
