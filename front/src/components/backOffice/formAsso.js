@@ -90,11 +90,11 @@ class FormAsso extends React.Component {
         return (
             <div>
                 <div className="formStyle">
-                    <TextField id="outlined-basic" label="Nom" variant="outlined" name="nameAsso" value= {this.state.nameAsso} onChange={this.handleChange} />
-                    <TextField id="outlined-basic" label="Contact" variant="outlined" name="contact" value= {this.state.contact} onChange={this.handleChange} />
-                    <TextField id="outlined-basic" label="Adresse" variant="outlined" name="address" value= {this.state.address} onChange={this.handleChange} />
-                    <TextField id="outlined-basic" label="Catégorie" variant="outlined" name="category" value= {this.state.category} onChange={this.handleChange} />  
-                    <TextField id="outlined-textarea" label="Description" variant="outlined" multiline name="description" value= {this.state.description} onChange={this.handleChange} />
+                    <TextField id="outlined-basic" size="small" label="Nom" variant="outlined" name="nameAsso" value= {this.state.nameAsso} onChange={this.handleChange} />
+                    <TextField id="outlined-basic" size="small" label="Contact" variant="outlined" name="contact" value= {this.state.contact} onChange={this.handleChange} />
+                    <TextField id="outlined-basic" size="small" label="Adresse" variant="outlined" name="address" value= {this.state.address} onChange={this.handleChange} />
+                    <TextField id="outlined-basic" size="small" label="Catégorie" variant="outlined" name="category" value= {this.state.category} onChange={this.handleChange} />  
+                    <TextField id="outlined-textarea" size="small" label="Description" variant="outlined" multiline name="description" value= {this.state.description} onChange={this.handleChange} />
                     <ButtonSave type="submit" variant="contained" startIcon={<SaveIcon />} onClick={this.sendAsso}>Enregistrer</ButtonSave>
                 </div>
             </div>

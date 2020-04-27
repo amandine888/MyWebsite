@@ -52,18 +52,20 @@ class AssoOffice extends React.Component {
         if (this.state.formAsso === true) {
             return (
                 <div>
-                    <div className="subtitleContainer">
-                        <h2>Gérer les associations</h2>
-                        <ButtonAdd
-                            variant="contained"
-                            startIcon={<AddCircleIcon/>} onClick={this.removeFormAsso}>
-                            Ajouter
-                        </ButtonAdd>
-                        <ButtonSup
-                            variant="contained"
-                            startIcon={<DeleteIcon />}>
-                            Supprimer
-                        </ButtonSup>
+                    <div className="managerContainer">
+                        <h2>Les associations</h2>
+                        <div className="buttonContainer">
+                            <ButtonAdd
+                                variant="contained"
+                                startIcon={<AddCircleIcon/>} onClick={this.removeFormAsso}>
+                                Ajouter
+                            </ButtonAdd>
+                            <ButtonSup
+                                variant="contained"
+                                startIcon={<DeleteIcon />}>
+                                Supprimer
+                            </ButtonSup>
+                        </div>
                     </div>
                     <FormAsso/>
                 </div>
@@ -72,18 +74,20 @@ class AssoOffice extends React.Component {
         else {
             return (
                 <div>
-                    <div className="subtitleContainer">
-                        <h2>Gérer les associations</h2>
-                        <ButtonAdd
-                            variant="contained"
-                            startIcon={<AddCircleIcon/>} onClick={this.showFormAsso}>
-                            Ajouter
-                        </ButtonAdd>
-                        <ButtonSup
-                            variant="contained"
-                            startIcon={<DeleteIcon />}>
-                            Supprimer
-                        </ButtonSup>
+                    <div className="managerContainer">
+                        <h2>Les associations</h2>
+                        <div className="buttonContainer">
+                            <ButtonAdd
+                                variant="contained"
+                                startIcon={<AddCircleIcon/>} onClick={this.showFormAsso}>
+                                Ajouter
+                            </ButtonAdd>
+                            <ButtonSup
+                                variant="contained"
+                                startIcon={<DeleteIcon />}>
+                                Supprimer
+                            </ButtonSup>
+                        </div>
                     </div>
                 </div>
             )

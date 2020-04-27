@@ -54,7 +54,7 @@ app.route('/logout').get(Authcontroller.logout);
 // User : 
 
 // Route to find an user by Id : 
-app.route('/userid').get(Userscontroller.getUserById); 
+app.route('/users/:id').get(Userscontroller.getUserById); 
 
 // Route to find all users : 
 app.route('/userall').get(Userscontroller.getAllUser); 

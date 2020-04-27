@@ -2,9 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'; 
 import Button from './crudButton'; 
 
+// Material UI : 
+
 import Checkbox from '@material-ui/core/Checkbox';
 
 // import CSS : 
+
 import './../../Mystyle.css'; 
 import './../backOffice/styleBackOffice.css'; 
 
@@ -12,11 +15,6 @@ class CrudAsso extends React.Component {
 
     constructor (props) {
         super (props); 
-
-        let token = localStorage.getItem ('token'); 
-        if (!token) {
-            this.props.history.push('/'); 
-        }
 
         this.state = {
             assos: [],
@@ -76,8 +74,8 @@ class CrudAsso extends React.Component {
         return (
             <div>
                 <div className='displayInfo'>
-                    <div className='infoBar'>
-                        <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                    <div className='infoBarRes'>
+                        <Checkbox  size='small' inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                         <p>Nom</p>
                         <p>Contact</p>
                         <p>Adresse</p>
@@ -89,13 +87,24 @@ class CrudAsso extends React.Component {
                     {this.state.assos.map((assos, index) =>{
                         
                         return (<ul className='listContainer' key={index.id}>
-                                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}/>
-                                    <div><li>{assos.nameAsso}</li></div>
-                                    <div><li>{assos.contact}</li></div>
-                                    <div><li>{assos.address}</li></div>
-                                    <div><li>{assos.category}</li></div>
-                                    <div><li>{assos.description}</li></div>
                                     <Button assoID={index.id} onDelete={this.removeAsso }/>
+                                    <div className="displayAsso">
+                                        <div className='infoBar'>
+                                            <p>Nom</p>
+                                            <p>Contact</p>
+                                            <p>Adresse</p>
+                                            <p>Catégorie</p>
+                                            <p>Description</p>
+                                        </div>
+                                        {/* <Checkbox size='small' inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}/> */}
+                                        <div className="asso">
+                                            <div><li>{assos.nameAsso}</li></div>
+                                            <div><li>{assos.contact}</li></div>
+                                            <div><li>{assos.address}</li></div>
+                                            <div><li>{assos.category}</li></div>
+                                            <div><li>{assos.description}</li></div>
+                                        </div>
+                                    </div>
                                 </ul>)
                     })}
                 </div>

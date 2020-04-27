@@ -52,18 +52,20 @@ class EventOffice extends React.Component {
         if (this.state.formEvent === true) {
             return (
                 <div>
-                    <div className="subtitleContainer">
-                        <h2>Gérer les événements</h2>
-                        <ButtonAdd
-                            variant="contained"
-                            startIcon={<AddCircleIcon/>} onClick={this.removeFormEvent}>
-                            Ajouter
-                        </ButtonAdd>
-                        <ButtonSup
-                            variant="contained"
-                            startIcon={<DeleteIcon />}>
-                            Supprimer
-                        </ButtonSup>
+                    <div className="managerContainer">
+                        <h2>Les événements</h2>
+                        <div className="buttonContainer">
+                            <ButtonAdd
+                                variant="contained"
+                                startIcon={<AddCircleIcon/>} onClick={this.removeFormEvent}>
+                                Ajouter
+                            </ButtonAdd>
+                            <ButtonSup
+                                variant="contained"
+                                startIcon={<DeleteIcon />}>
+                                Supprimer
+                            </ButtonSup>
+                        </div>
                     </div>
                     <FormEvent/>
                 </div>
@@ -72,18 +74,20 @@ class EventOffice extends React.Component {
         else {
             return (
                 <div>
-                    <div className="subtitleContainer">
-                        <h2>Gérer les événements</h2>
-                        <ButtonAdd
-                            variant="contained"
-                            startIcon={<AddCircleIcon/>} onClick={this.showFormEvent}>
-                            Ajouter
-                        </ButtonAdd>
-                        <ButtonSup
-                            variant="contained"
-                            startIcon={<DeleteIcon />}>
-                            Supprimer
-                        </ButtonSup>
+                    <div className="managerContainer">
+                        <h2>Les événements</h2>
+                        <div className="buttonContainer">
+                            <ButtonAdd
+                                variant="contained"
+                                startIcon={<AddCircleIcon/>} onClick={this.showFormEvent}>
+                                Ajouter
+                            </ButtonAdd>
+                            <ButtonSup
+                                variant="contained"
+                                startIcon={<DeleteIcon />}>
+                                Supprimer
+                            </ButtonSup>
+                        </div>
                     </div>
                 </div>
             )
