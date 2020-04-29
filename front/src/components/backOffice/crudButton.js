@@ -17,7 +17,6 @@ class Button extends Component {
     render() {
 
         const{onDelete}= this.props; 
-        const{assoID} = this.props; 
 
         return (
                 <div className='buttonCrud'>
@@ -25,7 +24,7 @@ class Button extends Component {
                     <IconButton size='small'>
                         <CreateIcon/>
                     </IconButton>
-                    <IconButton size='small' onClick={()=> onDelete(assoID)}>
+                    <IconButton size='small' onClick={(e)=> onDelete('id')}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
