@@ -54,7 +54,7 @@ app.route('/logout').get(Authcontroller.logout);
 // User : 
 
 // Route to find an user by Id : 
-app.route('/userid').get(Userscontroller.getUserById); 
+app.route('/users/:id').get(Userscontroller.getUserById); 
 
 // Route to find all users : 
 app.route('/userall').get(Userscontroller.getAllUser); 
@@ -94,7 +94,7 @@ app.route('/changeasso').put(Assocontroller.updateAsso);
 app.route('/changenameasso').put(Assocontroller.updateNameAsso); 
 
 // Route to delete an association by id : 
-app.route('/deleteasso').delete(Assocontroller.deleteAsso); 
+app.route('/deleteasso/:id').delete(Assocontroller.deleteAsso); 
 
 
 
@@ -122,7 +122,7 @@ app.route('/eventbydate').get(Eventcontroller.findEventbyDate);
 app.route('/changevent').put(Eventcontroller.updateEvent); 
 
 // Route to delete an event by id : 
-app.route('/deletevent').delete(Eventcontroller.deleteEvent); 
+app.route('/deletevent/:id').delete(Eventcontroller.deleteEvent); 
 
 
 
