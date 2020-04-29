@@ -4,8 +4,8 @@ import Connexion from './components/Connexion';
 import Home from './components/Home'; 
 import Associations from './components/associations'; 
 import Events from './components/events'; 
-import LogAdmin from './components/backOffice/loginAdmin'; 
-import OfficeAdmin from './components/backOffice/officeAdmin'; 
+import LogAdmin from './components/backOffice/components/loginAdmin'; 
+import OfficeAdmin from './components/backOffice/components/officeAdmin'; 
 import Useraccount from './components/userAccount';
 
 class App extends React.Component {

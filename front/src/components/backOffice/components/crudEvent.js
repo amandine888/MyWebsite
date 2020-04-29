@@ -1,15 +1,15 @@
 import React from 'react'; 
 import { withRouter } from 'react-router-dom'; 
+
+//import child components :
 import Button from './crudButton'; 
 
 // Material UI : 
-
 import Checkbox from '@material-ui/core/Checkbox';
 
 // import CSS : 
-
-import './../../Mystyle.css'; 
-import './../backOffice/styleBackOffice.css'; 
+import './../../../css/Mystyle.css';  
+import './../css/styleBackOffice.css'; 
 
 class CrudEvent extends React.Component {
 

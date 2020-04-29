@@ -5,7 +5,7 @@ import Footer from './Footer';
 import News from './news'; 
 import DialogSelect from './search';
 import Map from './map'; 
-import './../Mystyle.css';
+import './../css/Mystyle.css'
 import Button from '@material-ui/core/Button';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
