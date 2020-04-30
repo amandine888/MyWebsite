@@ -10,6 +10,7 @@ import Footer from './../../Footer';
 import './../../../css/Mystyle.css'; 
 import './../css/styleAsso.css'; 
 
+// Material UI : 
 import Link from '@material-ui/core/Link';
 
 class AllAsso extends React.Component {

@@ -1,23 +1,30 @@
 import React from 'react';
-import {Route, Switch, Link, BrowserRouter as Router} from 'react-router-dom'; 
-import Connexion from './components/Connexion'; 
+import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'; 
+
 import Home from './components/Home'; 
+import Connexion from './components/Connexion'; 
+import Useraccount from './components/userAccount';
 import AllAsso from './components/associations/components/homeAsso'; 
-import Events from './components/events'; 
+import Associations from './components/associations/components/association'; 
 import LogAdmin from './components/backOffice/components/loginAdmin'; 
 import OfficeAdmin from './components/backOffice/components/officeAdmin'; 
-import Useraccount from './components/userAccount';
 
 class App extends React.Component {
   render () {
     return (
       <Router>
         <Switch>
+
+          {/* Public route */}
           <Route exact path='/' component={Home}/>
-          <Route exact path='/Connexion' component={Connexion}/>
-          <Route exact path='/userAccount' component={Useraccount}/>
+          <Route exact path='/connexion' component={Connexion}/>
           <Route exact path='/associations' component={AllAsso}/>
-          <Route exact path='/events' component={Events}/>
+          <Route exact path='/infoAsso' component={Associations}/>
+
+          {/*  Route User with an account */}
+          <Route exact path='/userAccount' component={Useraccount}/>
+
+          {/* Route Admin */}
           <Route exact path='/logAdmin' component={LogAdmin}/>
           <Route exact path='/office' component={OfficeAdmin}/>
         </Switch>

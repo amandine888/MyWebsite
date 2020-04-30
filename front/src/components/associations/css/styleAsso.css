@@ -29,3 +29,12 @@
     flex-direction: column;
     font-size: 0.700em;
 }
+
+/* Page Asso */
+
+.descriptionAsso{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
