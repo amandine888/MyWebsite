@@ -1,9 +1,13 @@
 import React, { Component } from 'react'; 
 import {withRouter} from 'react-router-dom'; 
 import decode from 'jwt-decode'; 
+
+// import child component : 
 import SimpleMenu from './burgerMenu';
 import MenuConnect from './connectIcon';
 import MenuProfil from './profilIcon'; 
+
+// Material UI : 
 import { styled } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -65,7 +69,6 @@ class Nav extends React.Component {
             this.setState({showProfil: false}); 
         }
     }
-
     
     render (){
         if (this.state.showProfil === false){
