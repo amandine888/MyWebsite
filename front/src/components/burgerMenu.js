@@ -27,21 +27,21 @@ const useStyles = makeStyles({
   root: { 
       width: '100%', 
       height: '100vh',
-    '& ul': {
-      backgroundColor: '#B75D69',
-      padding : '70px', 
-      height: '60vh', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'space-evenly', 
-      '& li' : {  
-        '& a' : {
-        color: 'black', 
-        textDecoration: 'none', 
-        fontSize: '1.875em',
+      '& ul': {
+        backgroundColor: '#B75D69',
+        padding : '70px', 
+        height: '60vh', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'space-evenly', 
+        '& li' : {  
+          '& a' : {
+            color: 'black', 
+            textDecoration: 'none', 
+            fontSize: '1.875em',
+          }
         }
       }
-    }
   }
 });
 
