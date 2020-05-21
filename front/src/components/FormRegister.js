@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import './../Mystyle.css';
+import './../css/Mystyle.css'
 
 const containerStyle = {
     height: '80vh', 

@@ -3,19 +3,17 @@ import { withRouter } from 'react-router-dom';
 import JwtDecode from 'jwt-decode';
 
 //import child components : 
-
 import AssoOffice from './assoOffice'; 
 import EventOffice from './eventOffice'; 
 import CrudAsso from './crudAsso'; 
 import CrudEvent from './crudEvent'; 
 
 // Material UI : 
-
 import Button from '@material-ui/core/Button';
 
 // import CSS : 
-import './../../Mystyle.css'; 
-import './../backOffice/styleBackOffice.css'; 
+import './../../../css/Mystyle.css';  
+import './../css/styleBackOffice.css'; 
 
 
 class OfficeAdmin extends React.Component {

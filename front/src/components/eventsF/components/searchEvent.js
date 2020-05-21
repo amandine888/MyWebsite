@@ -1,6 +1,9 @@
 import React, { Component, useState  } from 'react';
-import {withRouter} from 'react-router-dom';
-import './../css/Mystyle.css'
+
+// import css : 
+import './../../../css/Mystyle.css'; 
+
+// Material UI :
 import { styled } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -38,7 +41,7 @@ const positionSearch = {
 
 // Hook Component : 
 
-export default function DialogSelect() {
+export default function DialogSelectEvent() {
     const [open, setOpen] = React.useState(false);
     const [state, setState] = React.useState({
         arrondissement: '',
@@ -65,7 +68,7 @@ export default function DialogSelect() {
 
     return (
         <div style={positionSearch}>
-            <Button onClick={handleClickOpen} style={logStyle}>Veuillez cliquer ici pour chercher une association</Button>
+            <Button onClick={handleClickOpen} style={logStyle}>Veuillez cliquer ici pour chercher un événement</Button>
             <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose}>
                 <DialogTitle>Choisissez votre filtre</DialogTitle>
                 <DialogContent>
@@ -138,5 +141,3 @@ export default function DialogSelect() {
         </div>
     )
 }
-
-
