@@ -20,7 +20,8 @@ exports.getUserById = function (req, res){
 
             else if (decoded.id){
 
-                User.findOne({_id: decoded.id}, function(err, user){
+                User.findById({_id: decoded.id}, function(err, user){
+                    console.log("id decoded: ", decoded.id)
                     if (err)
                         res.status(400).json(err);
                     else

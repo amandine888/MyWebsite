@@ -28,14 +28,23 @@ const Menu = styled(Toolbar)({
     justifyContent: 'space-between',
 })
 
+const logStyle = {
+    color: 'black', 
+    fontSize: "40px",
+}
+
 class Nav extends React.Component {
 
     constructor (props) {
         super (props); 
 
         this.state = {
-            showProfil: false
+            showProfil: false, 
+            User: {}, 
         }
+
+        console.log(this.state.User)
+        this.getData = this.getData.bind (this); 
     }
 
     getToken (){
@@ -69,8 +78,36 @@ class Nav extends React.Component {
             this.setState({showProfil: false}); 
         }
     }
+
+    // getData (){
+    //     let token = localStorage.getItem('token');
+    //     fetch('http://localhost:3050/users/:id', 
+    //     {
+    //         method: "get", 
+    //         headers: {
+    //             'Content-type':'application/x-www-form-urlencoded',
+    //             'Authorization' : "bearer ${localStorage.getItem('token')}"
+    //     }})
+    //     .then (res => {
+    //         if (res.status == 200){
+    //             res.json().then(res=>{
+    //                 this.setState({user: res})
+    //                 console.log(res);
+    //             }) 
+    //         }
+    //         else {
+    //             res.json().then(res=>{
+    //                 console.log(res); 
+    //             })
+    //         }
+    //     })
+    //     .catch(error =>console.log(error)); 
+    // }; 
+    
     
     render (){
+        const {User} = this.state; 
+        console.log(User); 
         if (this.state.showProfil === false){
             return (
                 <div>
@@ -92,6 +129,7 @@ class Nav extends React.Component {
                     <SimpleMenu/>
                     <Typo variant="h1">circé</Typo>
                     <MenuProfil/>
+                    {/* <h1 style={logStyle}>Hello{User.key}{User.email}</h1> */}
                     </Menu>
                     </AppBar>
                 </div>
