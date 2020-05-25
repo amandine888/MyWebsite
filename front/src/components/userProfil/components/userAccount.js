@@ -1,8 +1,11 @@
 import React from 'react'; 
 import { withRouter } from 'react-router-dom';
-import Nav from './navBar';
 import JwtDecode from 'jwt-decode';
 
+// import child component : 
+import Nav from './../../navBar';
+
+// Style : 
 const logStyle = {
     fontSize: "40px",
 }
@@ -29,18 +32,17 @@ class Useraccount extends  React.Component {
 
     };
 
-    componentDidMount (){
-        let token = localStorage.getItem('token');
-        fetch('http://localhost:3050/userid',
-        {
-            method: "get", 
-            headers: {
-                "Authorization": 'Bearer ' + token
-            }
-        })
-            .then(response => response.json())
-            .then(json => console.log(json))
-    }
+    // componentDidMount (){
+    //     let token = localStorage.getItem('token');
+    //     fetch('http://localhost:3050/users/:id',
+    //     {
+    //         method: "get", 
+    //         headers: {
+    //             "Authorization": 'Bearer ' + token
+    //         }
+    //     })
+    //         .then(response => response.json())
+    // }
 
     render (){
 
