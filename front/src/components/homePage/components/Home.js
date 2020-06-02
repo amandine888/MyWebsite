@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Nav from './navBar'; 
-import Footer from './Footer';
-import News from './news'; 
+
+//import child components :
+import Nav from '../../navBar/components/navBar'; 
+import Footer from '../../footer/components/Footer';
 import DialogSelect from './search';
-import Map from './map'; 
-import './../css/Mystyle.css'
+import Map from '../../map/components/map'; 
+import News from './news'; 
+
+// import CSS : 
+import './../../../css/Mystyle.css'; 
+
+// Material UI : 
 import Button from '@material-ui/core/Button';
+
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
 const logStyle = {

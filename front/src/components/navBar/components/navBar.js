@@ -44,7 +44,7 @@ class Nav extends React.Component {
         }
 
         console.log(this.state.User)
-        this.getData = this.getData.bind (this); 
+        // this.getData = this.getData.bind (this); 
     }
 
     getToken (){

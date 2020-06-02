@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import JwtDecode from 'jwt-decode';
 
 // import child component : 
-import Nav from './../../navBar';
+import Nav from '../../navBar/components/navBar';
 
 // Style : 
 const logStyle = {
