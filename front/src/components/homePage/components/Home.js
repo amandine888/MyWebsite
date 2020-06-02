@@ -10,6 +10,7 @@ import News from './news';
 
 // import CSS : 
 import './../../../css/Mystyle.css'; 
+import './../css/styleHome.css'; 
 
 // Material UI : 
 import Button from '@material-ui/core/Button';

@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 
 // import CSS : 
 import './../../../css/Mystyle.css'; 
+import './../css/styleHome.css'; 
 
 //Material UI : 
 import IconButton from '@material-ui/core/IconButton';

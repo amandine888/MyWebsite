@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 
 // import CSS : 
 import './../../../css/Mystyle.css'; 
+import './../css/styleHome.css'; 
 
 // Material UI : 
 import { styled } from '@material-ui/core/styles';

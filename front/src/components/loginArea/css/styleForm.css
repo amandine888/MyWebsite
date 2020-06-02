@@ -1,0 +1,49 @@
+/* Formulaires :  */
+
+.formContainer{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.titleForm{
+    background-color: rgb(234, 206, 194, 0.5);
+    width: 88%;
+    display:flex; 
+    justify-content: center;
+    font-size: 1.25em;
+    font-family: 'Jaldi', sans-serif;
+    text-transform: uppercase;
+}
+
+.fieldContainer{
+    border: 0.5px solid #000000; 
+    width: 88%;
+    height: 60vh;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.fieldStyle{
+    display: flex;
+    flex-direction: column;
+}
+
+.styleLabel{
+    font-size: 1.125em;
+    margin-top: 5vh;
+}
+
+.styleInput {
+    border: 0.5px solid #000000; 
+    width: 70vw;
+    height: 5vh;
+}
+
+.textForm{
+    font-size: 0.875em;
+}
