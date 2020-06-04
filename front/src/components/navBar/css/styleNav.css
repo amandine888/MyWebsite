@@ -1,0 +1,36 @@
+/* Menu burger */
+
+.burgerMenuSimple{
+    display: flex; 
+}
+
+.burgerMenuConnect{
+    display: flex; 
+}
+
+.menuSimple{
+    display: none;
+}
+
+.menuConnect{
+    display: none; 
+}
+
+@media only screen and (min-width : 750px){
+
+    .burgerMenuSimple{
+        display: none; 
+    }
+
+    .burgerMenuConnect{
+        display: none; 
+    }
+
+    .menuSimple{
+        display: flex; 
+    }
+
+    .menuConnect{
+        display: flex; 
+    }
+}
