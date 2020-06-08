@@ -2,9 +2,9 @@ import React from 'react';
 import {withRouter} from 'react-router-dom'; 
 
 // import child component : 
-import Nav from './../../navBar'; 
+import Nav from '../../navBar/components/navBar'; 
 import SelectTags from './selectTags';
-import Footer from './../../Footer';  
+import Footer from '../../footer/components/Footer';  
 
 // import css : 
 import './../../../css/Mystyle.css'; 

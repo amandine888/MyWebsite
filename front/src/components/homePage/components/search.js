@@ -1,6 +1,11 @@
 import React, { Component, useState  } from 'react';
 import {withRouter} from 'react-router-dom';
-import './../css/Mystyle.css'
+
+// import CSS : 
+import './../../../css/Mystyle.css'; 
+import './../css/styleHome.css'; 
+
+// Material UI : 
 import { styled } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';

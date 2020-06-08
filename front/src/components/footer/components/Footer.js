@@ -1,6 +1,11 @@
 import React from 'react'; 
 import {withRouter} from 'react-router-dom'; 
-import './../css/Mystyle.css'
+
+// import CSS : 
+import '../../../css/Mystyle.css'; 
+import './../css/styleFooter.css'; 
+
+// Material UI : 
 import { styled } from '@material-ui/core/styles';
 import {ThemeProvider, createMuiTheme,} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';

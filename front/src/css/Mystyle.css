@@ -34,90 +34,10 @@ body{
 }
 
 .headerContainerBis h2 {
-    font-weight: 400;
-    font-size: 1.25em;
+    font-weight: 600;
+    font-size: 1.5em;
     margin: 14vh 0 5vh 0;
-}
-
-/* Home Page */
-
-.sectionHome{
-    height: 30vh; 
-    border-top: 1px solid #1A1423; 
-    border-bottom: 1px solid #1A1423;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-}
-
-.newsContainer{
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-}
-
-.eventContainer{
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: rgb(238, 221, 220, 1);
-    width: 100%;
-    height: 50vh;
-}
-
-.hello{
-    height: 55vh;
-}
-
-/* Formulaires :  */
-
-.formContainer{
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20vh;
-}
-
-.titleForm{
-    background-color: rgb(234, 206, 194, 0.5);
-    width: 88%;
-    display:flex; 
-    justify-content: center;
-    font-size: 1.25em;
-    font-family: 'Jaldi', sans-serif;
     text-transform: uppercase;
-}
-
-.fieldContainer{
-    border: 0.5px solid #000000; 
-    width: 88%;
-    height: 60vh;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10vh;
-}
-
-.fieldStyle{
-    display: flex;
-    flex-direction: column;
-}
-
-.styleLabel{
-    font-size: 1.125em;
-    margin-top: 5vh;
-}
-
-.styleInput {
-    border: 0.5px solid #000000; 
-    width: 70vw;
-    height: 5vh;
-}
-
-.textForm{
-    font-size: 0.875em;
 }
 
 /* Bouton général :  */
@@ -131,7 +51,6 @@ body{
     margin-top: 4vh;
 }
 
-/* Home */
 /* Component Search */
 
 .division {
@@ -145,34 +64,3 @@ body{
     width: 30%;
 }
 
-/* Footer  */
-
-.footerContainer{
-    background-color: #B75D69;
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    margin-top: 10vh;
-}
-
-.newsletter{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-}
-
-.usefulInfo{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.usefulInfo p{
-    font-size: 1.125em;
-    margin-bottom: 0.5vh; 
-}

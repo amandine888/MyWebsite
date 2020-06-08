@@ -3,9 +3,9 @@ import {withRouter, Link} from 'react-router-dom';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
 // import child components : 
-import Nav from './../../navBar'; 
-import Footer from './../../Footer'; 
-import Map from './../../map'; 
+import Nav from '../../navBar/components/navBar'; 
+import Footer from '../../footer/components/Footer'; 
+import Map from '../../map/components/map'; 
 
 // import CSS : 
 import './../../../css/Mystyle.css'; 

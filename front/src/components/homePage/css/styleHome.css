@@ -1,0 +1,30 @@
+/* Home Page */
+
+.sectionHome{
+    height: 30vh; 
+    border-top: 1px solid #1A1423; 
+    border-bottom: 1px solid #1A1423;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.newsContainer{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.eventContainer{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(238, 221, 220, 1);
+    width: 100%;
+    height: 50vh;
+}
+
+.hello{
+    height: 55vh;
+}

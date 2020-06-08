@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'; 
 
-import Home from './components/Home'; 
-import Connexion from './components/Connexion'; 
+import Home from './components/homePage/components/Home'; 
+import Connexion from './components/loginArea/components/Connexion'; 
 import Useraccount from './components/userProfil/components/userAccount';
 import AllAsso from './components/associations/components/homeAsso'; 
 import Associations from './components/associations/components/association'; 

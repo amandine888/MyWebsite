@@ -1,5 +1,5 @@
-import React, { Component } from 'react'; 
-import {withRouter} from 'react-router-dom'; 
+import React from 'react'; 
+import {Link, withRouter} from 'react-router-dom'; 
 import decode from 'jwt-decode'; 
 
 // import child component : 
@@ -7,16 +7,28 @@ import SimpleMenu from './burgerMenu';
 import MenuConnect from './connectIcon';
 import MenuProfil from './profilIcon'; 
 
+// import CSS : 
+import '../css/styleNav.css';
+
 // Material UI : 
 import { styled } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+// CSS : 
+
 const Typo = styled(Typography)({
 
     color: '#1A1423',
     fontSize: '1.875em', 
+    fontFamily: 'Tenor Sans, sans-serif',
+    textTransform: 'uppercase',
+})
+
+const TypoResponsive = styled(Typography)({
+    color: '#1A1423',
+    fontSize: '2.5em', 
     fontFamily: 'Tenor Sans, sans-serif',
     textTransform: 'uppercase',
 })
@@ -29,8 +41,20 @@ const Menu = styled(Toolbar)({
 })
 
 const logStyle = {
-    color: 'black', 
+    color: '#1A1423', 
     fontSize: "40px",
+}
+
+const linkTo = {
+    color: '#1A1423', 
+    fontFamily: 'Open Sans, sans-serif', 
+    fontSize: '1.125em', 
+    textDecoration: 'none',
+}
+
+const linkHome = {
+    color: '#1A1423', 
+    textDecoration: 'none',
 }
 
 class Nav extends React.Component {
@@ -44,7 +68,7 @@ class Nav extends React.Component {
         }
 
         console.log(this.state.User)
-        this.getData = this.getData.bind (this); 
+        // this.getData = this.getData.bind (this); 
     }
 
     getToken (){
@@ -63,10 +87,10 @@ class Nav extends React.Component {
             return true; 
         }
         else return false; 
-    }
-    catch (err) {
-        return false; 
-    };
+    }; 
+    // catch (err) {
+    //     return false; 
+    // };
 
     componentDidMount () {
         if (this.connectionVerify()){
@@ -108,30 +132,58 @@ class Nav extends React.Component {
     render (){
         const {User} = this.state; 
         console.log(User); 
+
         if (this.state.showProfil === false){
             return (
                 <div>
+                <div className='burgerMenuSimple'>
                     <AppBar position="fixed">
-                    <Menu>
-                    <SimpleMenu/>
-                    <Typo variant="h1">circé</Typo>
-                    <MenuConnect/>
-                    </Menu>
+                        <Menu>
+                            <SimpleMenu/>
+                            <Typo variant="h1">circé</Typo>
+                            <MenuConnect/>
+                        </Menu>
                     </AppBar>
+                </div>
+                <div className='menuSimple'>
+                    <AppBar position="fixed">
+                        <Menu>
+                            <Link style={linkTo} to='/associations'>Associations</Link>
+                            <Link style={linkTo} to='events'>Événements</Link>
+                            <TypoResponsive variant="h1"><Link style={linkHome} to='/'>circé</Link></TypoResponsive>
+                            <Link style={linkTo} to=''>Newsletter</Link>
+                            <MenuConnect/>
+                        </Menu>
+                    </AppBar>
+                </div>
                 </div>
             )
         }
         else {
             return (
                 <div>
+                <div className='burgerMenuConnect'>
                     <AppBar position="fixed">
-                    <Menu>
-                    <SimpleMenu/>
-                    <Typo variant="h1">circé</Typo>
-                    <MenuProfil/>
-                    {/* <h1 style={logStyle}>Hello{User.key}{User.email}</h1> */}
-                    </Menu>
+                        <Menu>
+                            <SimpleMenu/>
+                            <Typo variant="h1">circé</Typo>
+                            <MenuProfil/>
+                            {/* <h1 style={logStyle}>Hello{User.key}{User.email}</h1> */}
+                        </Menu>
                     </AppBar>
+                </div>
+                <div className='menuConnect'>
+                    <AppBar position="fixed">
+                        <Menu>
+                            <Link style={linkTo} to='/associations'>Associations</Link>
+                            <Link style={linkTo} to='events'>Événements</Link>
+                            <TypoResponsive variant="h1"><Link style={linkHome} to='/'>circé</Link></TypoResponsive>
+                            <Link style={linkTo} to=''>Newsletter</Link>
+                            <MenuProfil/>
+                            {/* <h1 style={logStyle}>Hello{User.key}{User.email}</h1> */}
+                        </Menu>
+                    </AppBar>
+                </div>
                 </div>
             )
         }

@@ -1,10 +1,14 @@
 import React from 'react'; 
 import {withRouter} from 'react-router-dom';
+
+//import child components :
+
 import Login from './FormLogin'; 
 import Register from './FormRegister'; 
-import Nav from './navBar';
-import Footer from './Footer'; 
-import { makeStyles } from '@material-ui/core/styles';
+import Nav from '../../navBar/components/navBar';
+import Footer from '../../footer/components/Footer'; 
+
+// Material UI : 
 import Button from '@material-ui/core/Button';
 
 const logStyle = {

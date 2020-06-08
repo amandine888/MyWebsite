@@ -1,0 +1,38 @@
+.menuPerso {
+    border-bottom: 0.5px solid black;
+    border-top: 0.5px solid black;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.menuPerso button {
+    font-size: 1.25em;
+    height: 5vh; 
+}
+
+.selectInfo{
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    text-decoration-color: #B75D69;
+}
+
+.buttonInfo {
+    background-color: white;
+    border: none;
+}
+
+.selectFavorite{
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    text-decoration-color: #B75D69;
+}
+
+.buttonFavorite {
+    background-color: white;
+    border: none;
+}
