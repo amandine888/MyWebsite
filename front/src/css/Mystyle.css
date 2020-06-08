@@ -34,9 +34,10 @@ body{
 }
 
 .headerContainerBis h2 {
-    font-weight: 400;
-    font-size: 1.25em;
+    font-weight: 600;
+    font-size: 1.5em;
     margin: 14vh 0 5vh 0;
+    text-transform: uppercase;
 }
 
 /* Bouton général :  */
