@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {withRouter} from 'react-router-dom';
 
 //import child components :
@@ -15,8 +15,7 @@ import './../css/styleHome.css';
 // Material UI : 
 import Button from '@material-ui/core/Button';
 
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-
+// CSS : 
 const logStyle = {
     color : 'black',
     width : '70vw',
@@ -28,11 +27,35 @@ const footerPosition = {
     margin : '0', 
 }
 
+// Class component : 
+
 class Home extends React.Component {
 
     constructor (props) {
         super(props)
     }
+
+    // componentDidMount () {
+    //     const url = 'http://localhost:3050/assoall'
+
+    //     fetch (url)
+    //     .then (res => res.json())
+    //     .then(
+    //         (result) => {
+    //             this.setState({
+    //                 asso: result
+    //             }); 
+    //             console.log("asso:", this.state.asso)
+    //         }, 
+    //         (error) =>{
+    //             this.setState({
+    //                 error
+    //             }); 
+    //             console.log("error:", this.state.error)
+    //         }
+    //     )
+    // }
+
     
     render () {
         return (
@@ -42,20 +65,11 @@ class Home extends React.Component {
                     <h2>Bienvenu chez Circé</h2>
                     <DialogSelect/>
                 </div>
+                <Map/>
                 <div className= 'sectionHome'>
-                    <Button variant="contained" type="button" style={logStyle}>La liste des associations</Button>
+                    <Button variant="contained" type="button" style={logStyle}>Découvrir les associations</Button>
                 </div>
                 <News/>
-                <Map
-                    style="mapbox://styles/mapbox/streets-v9"
-                    containerStyle={{
-                    height: '50vh',
-                    width: '50vw'
-                    }}>
-                    <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                        <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
-                    </Layer>
-                </Map>
                 <Footer style = {footerPosition}/>
             </div>
         )

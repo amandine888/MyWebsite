@@ -12,15 +12,14 @@ let assoSchema = new mongoose.Schema ({
     }, 
 
     address: {
-        type: String,
+        type: 'string',
         required: [true, 'Please add an address']
     },
 
     location: {
-        coordinates: { type: ["Number"], index:'2dsphere' }, 
-        type: { type: "string", enum: ['Point']  },
-        formattedAddress: { type: "string" },
-        city: {type: 'string'}, 
+        coordinates: { type: [Number], index:'2dsphere' }, 
+        type: { type: String, enum: ['Point']  },
+        formattedAddress: String, 
     },
 
     category: {
@@ -43,7 +42,6 @@ assoSchema.pre('save', async function (next) {
     this.location = {
         type: 'Point',
         coordinates: [loc[0].longitude, loc[0].latitude],
-        city: loc[0].city,
         formattedAddress: loc[0].formattedAddress
     };
 
