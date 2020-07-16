@@ -67,7 +67,6 @@ export default function DialogSelect() {
         setOpen(false);
     };
 
-
     return (
         <div style={positionSearch}>
             <Button onClick={handleClickOpen} style={logStyle}>Veuillez cliquer ici pour chercher une association</Button>
