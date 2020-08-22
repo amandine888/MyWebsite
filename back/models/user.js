@@ -3,18 +3,22 @@ const mongoose = require ('mongoose');
 let userSchema = new mongoose.Schema ({
     pseudo: {
         type: 'string', 
-        required: 'You have to choose a pseudo', 
+        required: [true, 'Please add a pseudo'], 
+        max: 255, 
     }, 
 
     email: {
         type: 'string', 
-        required: 'You have ton enter an email', 
-        unique: true
+        required: [true, 'Please add an email'],
+        unique: true,
+        max: 255,
     }, 
 
     password: {
         type: 'string', 
-        required: 'You have to enter a password', 
+        required: [true, 'Please add a password'], 
+        min: 8, 
+        max: 1024, 
     },
 
     favId: [{

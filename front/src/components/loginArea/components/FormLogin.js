@@ -13,10 +13,10 @@ class Login extends React.Component {
 
         this.state = {
             email: "",
-            password: ""
+            password: "",  
         }; 
 
-        //bind : 
+        // bind : 
 
         this.handleChange = this.handleChange.bind(this); 
         this.connect = this.connect.bind(this); 
@@ -52,12 +52,18 @@ class Login extends React.Component {
                 "Content-Type": "application/json"},
         })
         .then((res) =>{
-            if (res.status == 200) {
-                res.json().then(res => {
+            if (res.status === 400) {
+                this.setState ({error: 'Mot de passe invalide'}); 
+            }
+            else {
+                console.log(res); 
+            }
+            if (res.status === 200) {
+                res.json().then ((res) => {
                     localStorage.setItem('token', res.token);
                     this.props.history.push('/userAccount');
                     console.log(res.token)
-                })
+                });
             }
         })
         .catch(error => console.log(error));
@@ -83,6 +89,7 @@ class Login extends React.Component {
                             <label className='styleLabel'>Password</label>
                             <input className='styleInput' type='password' name='password' value = {this.state.password} onChange={this.handleChange} required></input>
                             <p className='textForm'>Mot de passe oublié ? Cliquez sur ce lien</p>
+                            <p>{this.state.error}</p>
                         </div>
                         <button className='styleButton' onClick={this.connect}>Se connecter</button>
                     </div>
