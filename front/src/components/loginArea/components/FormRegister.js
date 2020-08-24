@@ -18,7 +18,7 @@ class Register extends React.Component {
             pseudo: "",
             email: "", 
             password: "", 
-            confPassword: ""
+            confirmPassword: ""
         };
 
         // bind : 
@@ -47,7 +47,7 @@ class Register extends React.Component {
     send (e) {
         
         console.log(this.state);
-        const { pseudo, email, password} = this.state; 
+        const { pseudo, email, password, confirmPassword} = this.state; 
 
         fetch('http://localhost:3050/register',{
 
@@ -58,7 +58,8 @@ class Register extends React.Component {
             body: JSON.stringify({
                 pseudo, 
                 email, 
-                password
+                password, 
+                confirmPassword
             })
         })
         // .then(response =>{
@@ -104,7 +105,7 @@ class Register extends React.Component {
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Confirm Password</label>
-                            <input className='styleInput' id="confPassword" type='password' name='confPassword' value={this.state.confPassword} onChange={this.handlechange}/>
+                            <input className='styleInput' id="confirmPassword" type='password' name='confirmPassword' value={this.state.confirmPassword} onChange={this.handlechange}/>
                         </div>
                         <button className='styleButton' onClick={this.send}>S'inscrire</button>
                     </div>

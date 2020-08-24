@@ -17,6 +17,8 @@
     "express": "^4.17.1",
     "express-bearer-token": "^2.4.0",
     "geocoder": "^0.2.3",
+    "joi": "^17.2.1",
+    "joigoose": "^8.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "minimist": "^1.2.5",
