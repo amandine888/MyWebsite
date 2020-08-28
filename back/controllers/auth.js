@@ -7,8 +7,9 @@ jwt_secret = process.env.JWT_SECRET_KEY;
 adm_login = process.env.ADMIN_LOGIN; 
 adm_password = process.env.ADMIN_PASSWORD;  
 
-// Authentication validation : 
-const {registerValidation} = require("../utils/validateAuth"); 
+// Require validation middleware : 
+
+const {registerValidation, loginValidation} = require("../utils/validateAuth"); 
 
 // Register User : 
 
@@ -16,18 +17,12 @@ exports.register = (req, res) => {
 
     const {error} = registerValidation(req.body); 
 
-    // Errors validation : 
-
     if (error) return res.status(400).json({error})
     console.log({error}); 
-
-    // Hash the password : 
 
     let hash = bcrypt.hashSync(req.body.password, 10);
     req.body.password, (req.body.confirmPassword = hash);
     req.body.admin = false; 
-
-    // Error when the Email is already registered : 
 
     User.findOne({email: req.body.email}).then((isEmailExist)=>{
 
@@ -57,59 +52,38 @@ exports.register = (req, res) => {
     })
 }
 
-// exports.register = (req, res) => {
-
-//     let hash = bcrypt.hashSync(req.body.password, 10);
-//     req.body.password = hash;
-//     req.body.admin = false; 
-
-//         let user = new User ({
-//             pseudo : req.body.pseudo, 
-//             email : req.body.email,
-//             password : hash, 
-//         }); 
-
-//         if (user.pseudo !== null && user.email !== null && user.password !== null) {
-//             user.save(function(err, data){
-                
-//                 if (err)
-//                 res.status(400).json(err)
-
-//                 else 
-//                 res.status(200).json(data)
-                
-//             })
-//         }
-//     };
-
 // Login User : 
 
 exports.login = function(req, res){
 
-    User.findOne({email: req.body.email}, function(err, user){
+    const {error} = loginValidation(req.body); 
 
-        if (err)
-            res.status(400).json({auth: false, message: err}); 
+    if (error) return res.status(400).json({error})
+    console.log({error}); 
 
-        else if (!user)
-            res.status(201).json({auth: false, message: 'User not found'}); 
+    User.findOne({email: req.body.email})
+        .then((user) => {
+            if (!user){
+                res.status(201).json({auth: false, message: 'User not found'}); 
+            }
 
-        else {
             bcrypt.compare(req.body.password, user.password, function(err, result){
                 if (result) {
                     let token = jwt.sign({id: user._id, admin: false}, jwt_secret, {expiresIn: '1h'}); 
                     res.status(200).json({auth: true, user: user, token: token}); 
-                        
-                        console.log(token)
+                    console.log("Successful connexion !")
+                    console.log(token)
                 }
-
-                else
+                else {
                     res.status(400).json({auth: false, message: 'Your email or password do not exist'}); 
-            })
-        }
-    });
+                }
+            });
+        })
+        .catch((err) => {
+            res.status(400).json(err); 
+            console.log("Wrong connexion !")
+        })
 };
-
 
 // Login Admin : 
 
@@ -135,3 +109,58 @@ exports.logout = function (req, res){
         })
     }
 }
+
+
+// exports.register = (req, res) => {
+
+//     let hash = bcrypt.hashSync(req.body.password, 10);
+//     req.body.password = hash;
+//     req.body.admin = false; 
+
+//         let user = new User ({
+//             pseudo : req.body.pseudo, 
+//             email : req.body.email,
+//             password : hash, 
+//         }); 
+
+//         if (user.pseudo !== null && user.email !== null && user.password !== null) {
+//             user.save(function(err, data){
+                
+//                 if (err)
+//                 res.status(400).json(err)
+
+//                 else 
+//                 res.status(200).json(data)
+                
+//             })
+//         }
+//     };
+
+
+// Login User : 
+
+// exports.login = function(req, res){
+
+//     User.findOne({email: req.body.email}, function(err, user){
+
+//         if (err)
+//             res.status(400).json({auth: false, message: err}); 
+
+//         else if (!user)
+//             res.status(201).json({auth: false, message: 'User not found'}); 
+
+//         else {
+//             bcrypt.compare(req.body.password, user.password, function(err, result){
+//                 if (result) {
+//                     let token = jwt.sign({id: user._id, admin: false}, jwt_secret, {expiresIn: '1h'}); 
+//                     res.status(200).json({auth: true, user: user, token: token}); 
+                        
+//                         console.log(token)
+//                 }
+
+//                 else
+//                     res.status(400).json({auth: false, message: 'Your email or password do not exist'}); 
+//             })
+//         }
+//     });
+// };
