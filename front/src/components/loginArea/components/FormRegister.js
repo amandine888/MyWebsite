@@ -86,30 +86,30 @@ class Register extends React.Component {
     render () {
         return (
             <div>
-                <div className='formContainer'>
+                <form className='formContainer'>
                     <div className='titleForm'>
                         <h2>Inscription</h2>
                     </div>
                     <div className='fieldContainer' style={containerStyle}>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Pseudo</label>
-                            <input className='styleInput' type='text' name='pseudo' value={this.state.pseudo} onChange={this.handlechange}/>
+                            <input className='styleInput' type='text' name='pseudo' id='pseudo' placeholder='Entrez votre pseudo' value={this.state.pseudo} onChange={this.handlechange}/>
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Email</label>
-                            <input className='styleInput' type='email' name ='email' value={this.state.email} onChange={this.handlechange} required/>
+                            <input className='styleInput' type='email' name ='email' id='email' placeholder='Entrez votre email' value={this.state.email} onChange={this.handlechange} required/>
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Password</label>
-                            <input className='styleInput' type='password' name='password' value={this.state.password} onChange={this.handlechange} required/>
+                            <input className='styleInput' type='password' name='password' id='password' placeholder='Entrez votre mot de passe' value={this.state.password} onChange={this.handlechange} required/>
                         </div>
                         <div className='fieldStyle'>
                             <label className='styleLabel'>Confirm Password</label>
-                            <input className='styleInput' id="confirmPassword" type='password' name='confirmPassword' value={this.state.confirmPassword} onChange={this.handlechange}/>
+                            <input className='styleInput' type='password' name='confirmPassword' id="confirmPassword" placeholder='Confirmez votre mot de passe' value={this.state.confirmPassword} onChange={this.handlechange}/>
                         </div>
                         <button className='styleButton' onClick={this.send}>S'inscrire</button>
                     </div>
-                </div>
+                </form>
             </div>
         )
     }
