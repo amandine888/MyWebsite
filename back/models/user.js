@@ -2,19 +2,24 @@ const mongoose = require ('mongoose');
 
 let userSchema = new mongoose.Schema ({
     pseudo: {
-        type: 'string', 
-        required: 'You have to choose a pseudo', 
+        type: "string", 
+        required: [true, "Please add a pseudo"],
+        min: 3, 
+        max: 30, 
     }, 
 
     email: {
-        type: 'string', 
-        required: 'You have ton enter an email', 
-        unique: true
+        type: "string", 
+        required: [true, "Please add an email"],
+        unique: true,
+        max: 255,
     }, 
 
     password: {
-        type: 'string', 
-        required: 'You have to enter a password', 
+        type: "string", 
+        required: [true, "Please add a password"], 
+        min: 8, 
+        max: 1024, 
     },
 
     favId: [{
@@ -22,4 +27,4 @@ let userSchema = new mongoose.Schema ({
     }], 
 }) 
 
-module.exports = mongoose.model('User', userSchema); 
+module.exports = mongoose.model('User', userSchema);

@@ -1,117 +1,119 @@
-import React from 'react';
-import {withRouter} from 'react-router-dom';
+import React from "react";
+import {withRouter} from "react-router-dom";
+import {Formik} from "formik"; 
+import registerValidation from "../../../validations/validationRegister"
 
 // import CSS : 
-import '../../../css/Mystyle.css'; 
-import './../css/styleForm.css'; 
+import "../../../css/Mystyle.css"; 
+import "./../css/styleForm.css"; 
 
-const containerStyle = {
-    height: '80vh', 
-}
+// Material UI : 
+import Button from "@material-ui/core/Button";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import { makeStyles } from "@material-ui/core/styles";
 
-class Register extends React.Component {
-
-    constructor (props){
-        super(props); 
-
-        this.state = {
-            pseudo: "",
-            email: "", 
-            password: "", 
-            confPassword: ""
-        };
-
-        // bind : 
-        this.handlechange = this.handlechange.bind(this); 
-        this.send = this.send.bind(this); 
-        // this.submit = this.submit.bind(this); 
-
+// Style : 
+const useStyle = makeStyles ({
+    root : {
+        color : "#B52E2C", 
+        fontSize: "0.7em"
     }
+});
 
-    //props : 
+const logStyle = {
+    color : 'black',
+    width : '40vw',
+    height: '50px',
+    backgroundColor: '#B75D69',
+    fontWeight: "500",
+    padding: "1.5vh 0vw",
+    marginTop: "4vh"
+};
 
-    handlechange (e) {
-        let ref = e.target.name; 
-        let value = e.target.value; 
-        
-        this.setState({ 
-            [ref]: value
-        });
-    }
+// Values : 
+const initialValues = {
+    pseudo: "", 
+    email: "", 
+    password: "", 
+    confirmPassword: ""
+};
 
-    // submit (e) {
-    //     e.preventDefault(); 
-    //     console.log(this.state); 
-    // }
+const Register = (props) => {
 
-    send (e) {
-        
-        console.log(this.state);
-        const { pseudo, email, password} = this.state; 
+    const classes = useStyle();
 
-        fetch('http://localhost:3050/register',{
+    return (
+        <Formik
+            initialValues={initialValues}
+            validationSchema={registerValidation}
+            onSubmit={(values)=>{
+                fetch("http://localhost:3050/register",{
+                    headers: {
+                        "Accept" : "application/json", 
+                        "Content-Type": "application/json"}, 
+                    method: "POST", 
+                    body: JSON.stringify(values),
+                })
+                .then((response)=>{
+                    if (response.ok) {
+                        response.json()
+                        .then (console.log);
+                        this.props.history.push("/connexion");
+                    }
+                    else {
+                        console.error("server response : " +response.status); 
+                    }
+                })
+                .catch(errors =>{console.error(errors);
+                });
+                console.log(values);
+            }}
+        >
 
-            headers: {
-                "Accept" : "application/json", 
-                "Content-Type": "application/json"}, 
-            method: 'POST', 
-            body: JSON.stringify({
-                pseudo, 
-                email, 
-                password
-            })
-        })
-        // .then(response =>{
-        //     response.json()
-        //     .then(console.log);
-        // })
+        {(props) => {
+            const {
+                values, 
+                errors,
+                handleChange,
+                handleSubmit, 
+                handleBlur,
+                isValid,
+                dirty,
+            } = props; 
 
-            .then((response)=>{
-                if (response.ok) {
-                    response.json()
-                    .then (console.log);
-                    this.props.history.push('/connexion');
-                }
-                else {
-                    console.error('server response : ' +response.status); 
-                }
-            })
-            .catch(error =>{console.error(error);})
-        // e.prevent.default(); 
-        // console.log("submitted"); 
-    }
-
-
-    render () {
-        return (
-            <div>
-                <div className='formContainer'>
-                    <div className='titleForm'>
+            return (
+                <form className="formContainer" onSubmit={handleSubmit}>
+                    <div className="titleForm">
                         <h2>Inscription</h2>
                     </div>
-                    <div className='fieldContainer' style={containerStyle}>
-                        <div className='fieldStyle'>
-                            <label className='styleLabel'>Pseudo</label>
-                            <input className='styleInput' type='text' name='pseudo' value={this.state.pseudo} onChange={this.handlechange}/>
+                    <div className="fieldContainer">
+                        <div className="fieldStyle">
+                            <label className="styleLabel">Pseudo</label>
+                            <input className="styleInput" type="text" name="pseudo" id="pseudo" placeholder="Entrez votre pseudo" value={values.pseudo} onChange={handleChange} onBlur={handleBlur} required/>
+                            {errors.pseudo ? <FormHelperText id="component-error-text" className={classes.root}>{errors.pseudo}</FormHelperText> : null}
                         </div>
-                        <div className='fieldStyle'>
-                            <label className='styleLabel'>Email</label>
-                            <input className='styleInput' type='email' name ='email' value={this.state.email} onChange={this.handlechange} required/>
+                        <div className="fieldStyle">
+                            <label className="styleLabel">Email</label>
+                            <input className="styleInput" type="email" name ="email" id="email" placeholder="Entrez votre email" value={values.email} onChange={handleChange} onBlur={handleBlur} required/>
+                            {errors.email ? <FormHelperText id="component-error-text" className={classes.root}>{errors.email}</FormHelperText> : null}
                         </div>
-                        <div className='fieldStyle'>
-                            <label className='styleLabel'>Password</label>
-                            <input className='styleInput' type='password' name='password' value={this.state.password} onChange={this.handlechange} required/>
+                        <div className="fieldStyle">
+                            <label className="styleLabel">Password</label>
+                            <input className="styleInput" type="password" name="password" id="password" placeholder="Entrez votre mot de passe" value={values.password} onChange={handleChange} onBlur={handleBlur} required/>
+                            {errors.password ? <FormHelperText id="component-error-text" className={classes.root}>{errors.password}</FormHelperText> : null}
                         </div>
-                        <div className='fieldStyle'>
-                            <label className='styleLabel'>Confirm Password</label>
-                            <input className='styleInput' id="confPassword" type='password' name='confPassword' value={this.state.confPassword} onChange={this.handlechange}/>
+                        <div className="fieldStyle">
+                            <label className="styleLabel">Confirm Password</label>
+                            <input className="styleInput" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirmez votre mot de passe" value={values.confirmPassword} onChange={handleChange} onBlur={handleBlur} required/>
+                            {errors.confirmPassword ? <FormHelperText id="component-error-text" className={classes.root}>{errors.confirmPassword}</FormHelperText> : null}
                         </div>
-                        <button className='styleButton' onClick={this.send}>S'inscrire</button>
+                        <Button variant="contained" type="submit" disabled={!(isValid && dirty)} style={logStyle}>S'inscrire</Button>
                     </div>
-                </div>
-            </div>
-        )
-    }
-}
+                </form>
+            )
+        }}
+        </Formik>
+    );
+};
 
 export default withRouter (Register); 
