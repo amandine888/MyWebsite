@@ -43,6 +43,7 @@ class OfficeAdmin extends React.Component {
         this.removeAsso = this.removeAsso.bind (this); 
         this.openEvent = this.openEvent.bind (this); 
         this.removeEvent = this.removeEvent.bind (this); 
+        this.logout = this.logout.bind(this); 
     }; 
 
     openAsso () {
@@ -69,7 +70,24 @@ class OfficeAdmin extends React.Component {
         })
     }
 
-
+    logout () {
+        let token = localStorage.getItem('token'); 
+        fetch("http://localhost:3050/logout", {
+            method: "get", 
+            headers: {
+                "Authorization": 'Bearer ' + token
+            }
+        })
+        .then(res => {
+            if(res.status == 200){
+                res.json().then(res => {
+                localStorage.removeItem('token'); 
+                this.props.history.push('/'); 
+            })
+            }
+        })
+        .catch(error => console.log(error));
+    }
 
     render () {
 
@@ -107,7 +125,7 @@ class OfficeAdmin extends React.Component {
                     <nav className='navBar'>
                         <Button variant="contained" onClick= {this.openAsso}>Asso</Button>
                         <Button variant="contained" onClick={this.openEvent}>Event</Button>
-                        <Button variant="contained">Log Out</Button>
+                        <Button variant="contained" onClick={this.logout}>Log Out</Button>
                     </nav>
                 </div>
             ); 
