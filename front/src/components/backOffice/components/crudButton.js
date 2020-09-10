@@ -23,7 +23,7 @@ class Button extends Component {
                     <IconButton size='small'>
                         <CreateIcon/>
                     </IconButton>
-                    <IconButton size='small' onClick={(e)=> onDelete('id')}>
+                    <IconButton size='small' onClick={(e)=> onDelete()}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>
