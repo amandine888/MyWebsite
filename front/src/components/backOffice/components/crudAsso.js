@@ -22,7 +22,7 @@ class CrudAsso extends React.Component {
 
         console.log(this.state.assos)
 
-        // this.removeAsso = this.removeAsso.bind (this); 
+        this.removeAsso = this.removeAsso.bind (this); 
     }
 
 
@@ -51,26 +51,25 @@ class CrudAsso extends React.Component {
         .catch(error =>console.log(error)); 
     }; 
 
-    // removeAsso (id) {
+    removeAsso (e) {
 
-    //     if (window.confirm('Are ou sure ? ')); 
+        if (window.confirm('Are ou sure ? ')); 
 
-    //     let token = localStorage.getItem('token'); 
+        let token = localStorage.getItem('token'); 
     
-    //     fetch ("http://localhost:3050/deleteasso/" + id, {
-    //         method: "DELETE", 
-
-    //         headers: {  
-    //         "Authorization": 'Bearer ' + token,},  
-    //     })
-    //     .then( res=>{
-    //         if(res.status ==200){
-    //             res.json().then(res=>{
-    //                     console.log('supprimé'); 
-    //             })
-    //         }
-    //     })
-    // }; 
+        fetch ("http://localhost:3050/deleteasso/", {
+            method: "DELETE", 
+            headers: {  
+            "Authorization": 'Bearer ' + token,},  
+        })
+        .then( res=>{
+            if(res.status ==200){
+                res.json().then(res=>{
+                        console.log('supprimé'); 
+                })
+            }
+        })
+    }; 
 
     render() {
         return (
@@ -86,10 +85,10 @@ class CrudAsso extends React.Component {
                         <p>Actions</p>
                     </div>
                     
-                    {this.state.assos.map((assos, index) =>{
+                    {this.state.assos.map((item) =>{
                         
-                        return (<div className='listContainer' key={index._id} dataId='id'>
-                                    <Button dataId='id' onDelete={this.removeAsso }/>
+                        return (<div className='listContainer' key={item._id}>
+                                    <Button onDelete={this.removeAsso}/>
                                     <div className="displayAsso">
                                         <div className='infoBar'>
                                             <p>Nom</p>
@@ -100,11 +99,11 @@ class CrudAsso extends React.Component {
                                         </div>
                                         {/* <Checkbox size='small' inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}/> */}
                                         <div className="asso">
-                                            <div><li>{assos.nameAsso}</li></div>
-                                            <div><li>{assos.contact}</li></div>
-                                            <div><li>{assos.address}</li></div>
-                                            <div><li>{assos.category}</li></div>
-                                            <div><li>{assos.description}</li></div>
+                                            <div><li>{item.nameAsso}</li></div>
+                                            <div><li>{item.contact}</li></div>
+                                            <div><li>{item.address}</li></div>
+                                            <div><li>{item.category}</li></div>
+                                            <div><li>{item.description}</li></div>
                                         </div>
                                     </div>
                                 </div>)

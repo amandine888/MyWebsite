@@ -60,7 +60,7 @@ class FormAsso extends React.Component {
 
         fetch ('http://localhost:3050/newasso', {
             method: "POST",
-            body: JSON.stringify(this.state), 
+            body: JSON.stringify({newasso}), 
             headers: {
                 "Authorization": 'Bearer ' + token,
                 Accept : "application/json", 
