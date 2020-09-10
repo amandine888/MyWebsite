@@ -72,6 +72,7 @@ class OfficeAdmin extends React.Component {
 
     logout () {
         let token = localStorage.getItem('token'); 
+
         fetch("http://localhost:3050/logout", {
             method: "get", 
             headers: {
@@ -81,8 +82,10 @@ class OfficeAdmin extends React.Component {
         .then(res => {
             if(res.status == 200){
                 res.json().then(res => {
-                localStorage.removeItem('token'); 
+                localStorage.removeItem("token"); 
                 this.props.history.push('/'); 
+                
+                console.log('Déconnexion')
             })
             }
         })
@@ -97,7 +100,7 @@ class OfficeAdmin extends React.Component {
                     <nav className='navBar'>
                         <Button variant="contained" onClick={this.removeAsso}>Asso</Button>
                         <Button variant="contained" onClick={this.removeEvent}>Event</Button>
-                        <Button variant="contained">Log Out</Button>
+                        <Button variant="contained" onClick={this.logout}>Log Out</Button>
                     </nav>
                     <AssoOffice/>
                     <CrudAsso/>
@@ -111,7 +114,7 @@ class OfficeAdmin extends React.Component {
                 <nav className='navBar'>
                     <Button variant="contained" onClick={this.removeAsso}>Asso</Button>
                     <Button variant="contained" onClick={this.removeEvent}>Event</Button>
-                    <Button variant="contained">Log Out</Button>
+                    <Button variant="contained" onClick={this.logout}>Log Out</Button>
                 </nav>
                 <EventOffice/>
                 <CrudEvent/>
