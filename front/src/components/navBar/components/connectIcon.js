@@ -73,8 +73,8 @@ export default function MenuConnect() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}>
                     <Close fontSize='large' onClick={handleClose}/>
-                    <MenuItem onClick={handleClose}><Link to = '/connexion#FormLogin'>Connexion</Link></MenuItem>
-                    <MenuItem onClick={handleClose}><Link to = '/connexion#FormRegister'>Inscription</Link></MenuItem>
+                    <MenuItem onClick={handleClose}><Link to = '/connexion'>Connexion</Link></MenuItem>
+                    <MenuItem onClick={handleClose}><Link to = '/connexion'>Inscription</Link></MenuItem>
             </Menu>
         </div>
     );

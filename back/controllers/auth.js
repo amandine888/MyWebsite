@@ -9,11 +9,13 @@ adm_password = process.env.ADMIN_PASSWORD;
 
 // Require validation middleware : 
 
-const {registerValidation, loginValidation} = require("../utils/validateAuth"); 
+const {registerValidation} = require("../utils/validateAuth"); 
 
 // Register User : 
 
 exports.register = (req, res) => {
+
+    console.log('Hello')
 
     const {error} = registerValidation(req.body); 
 

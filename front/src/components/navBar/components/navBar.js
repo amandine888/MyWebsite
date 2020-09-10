@@ -1,5 +1,5 @@
 import React from 'react'; 
-import {Link, withRouter} from 'react-router-dom'; 
+import {Link, NavLink, withRouter} from 'react-router-dom'; 
 import decode from 'jwt-decode'; 
 
 // import child component : 
@@ -40,17 +40,11 @@ const Menu = styled(Toolbar)({
     justifyContent: 'space-between',
 })
 
-const logStyle = {
-    color: '#1A1423', 
-    fontSize: "40px",
-}
-
 const linkTo = {
     color: '#1A1423', 
     fontFamily: 'Open Sans, sans-serif', 
     fontSize: '1.125em', 
-    textDecoration: 'none',
-}
+    }
 
 const linkHome = {
     color: '#1A1423', 
@@ -148,10 +142,10 @@ class Nav extends React.Component {
                 <div className='menuSimple'>
                     <AppBar position="fixed">
                         <Menu>
-                            <Link style={linkTo} to='/associations'>Associations</Link>
-                            <Link style={linkTo} to='events'>Événements</Link>
+                            <NavLink style={linkTo} activeStyle={{color: '#B75D69'}} to='/associations'>Associations</NavLink>
+                            <NavLink style={linkTo} activeStyle={{color: '#B75D69'}} to='events'>Événements</NavLink>
                             <TypoResponsive variant="h1"><Link style={linkHome} to='/'>circé</Link></TypoResponsive>
-                            <Link style={linkTo} to=''>Newsletter</Link>
+                            <NavLink style={linkTo} to='#'>Newsletter</NavLink>
                             <MenuConnect/>
                         </Menu>
                     </AppBar>
@@ -175,10 +169,10 @@ class Nav extends React.Component {
                 <div className='menuConnect'>
                     <AppBar position="fixed">
                         <Menu>
-                            <Link style={linkTo} to='/associations'>Associations</Link>
-                            <Link style={linkTo} to='events'>Événements</Link>
+                            <NavLink style={linkTo} activeStyle={{color: '#B75D69'}} to='/associations'>Associations</NavLink>
+                            <NavLink style={linkTo} activeStyle={{color: '#B75D69'}} to='events'>Événements</NavLink>
                             <TypoResponsive variant="h1"><Link style={linkHome} to='/'>circé</Link></TypoResponsive>
-                            <Link style={linkTo} to=''>Newsletter</Link>
+                            <NavLink style={linkTo} to='#'>Newsletter</NavLink>
                             <MenuProfil/>
                             {/* <h1 style={logStyle}>Hello{User.key}{User.email}</h1> */}
                         </Menu>

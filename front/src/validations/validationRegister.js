@@ -11,8 +11,8 @@ const registerValidation = Yup.object().shape ({
     password: Yup.string()
         .required("Vous devez renseigner un mot de passe")
         .min(8, "Votre mot de passe doit comporter au moins 8 caractères")
-        .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/, 
-        ""),
+        .matches(/^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/, 
+        "Vous devez renseigner au moins 8 caractères, 1 majsucule, 1 minuscule, 1 chiffre et 1 caractère spécial"),
     confirmPassword: Yup.string()
         .required("Vous devez confirmer votre mot de passe")
         .oneOf([Yup.ref("password")], "Votre mot de passe doit correspondre au précédent"), 
